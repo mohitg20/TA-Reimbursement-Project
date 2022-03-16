@@ -1,4 +1,4 @@
-	/* Coded with love by Mutiullah Samim */
+	/* test2 */
     body,
     html {
         margin: 0;
@@ -6,6 +6,9 @@
         height: 100%;
         background: #60a3bc !important;
     }
+
+
+    
     .user_card {
         height: 400px;
         width: 350px;
