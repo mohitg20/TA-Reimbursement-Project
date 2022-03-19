@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %} My Profile {% endblock title %}
+{% block body %} 
+<br>  <br>
+    <h1 class="text-center"> MY PROFILE </h1>
+    <br>  <br>  <br>
+    <div class="container">
+    <form class="row g-3" method="post" action="/user_profile">
+      {% csrf_token %}
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="col-md-6">
+          <label for="rollno" class="form-label">Roll No./PF No.</label>
+          <input type="text" class="form-control" id="rollno" name="rollno">
+        </div> 
+        <div class="col-md-4">
+            <label for="designation" class="form-label">Designation</label>
+            <select id="designation" class="form-select" name="designation">
+              <option selected>Choose Your Designation</option>
+              <option value="1">Student</option>
+              <option value="2">Faculty</option>
+              <option value="3">Office Staff</option>
+              <option value="4">Project Employee</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" class="form-control" id="department" name="department">
+          </div>
+          <div class="col-md-6">
+            <label for="bankname" class="form-label">Bank Name</label>
+            <input type="text" class="form-control" id="bankname" name="bankname">
+          </div>
+          <div class="col-md-4">
+            <label for="ACtype" class="form-label">Type of Bank A/C</label>
+            <select id="ACtype" class="form-select" name="ACtype">
+              <option selected>Select the type of Bank Account</option>
+              <option value="1">Current Account</option>
+              <option value="2">Savings Account</option>
+              <option value="3">Salary Account</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="AC" class="form-label">Bank A/C Number</label>
+            <input type="text" class="form-control" id="AC" name="AC">
+          </div>
+          <div class="col-md-6">
+            <label for="IFSC" class="form-label">Bank IFSC Code</label>
+            <input type="text" class="form-control" id="IFSC" name="IFSC">
+          </div>
+          <div class="col-md-6">
+            <label for="aadhar" class="form-label">Aadhar Number</label>
+            <input type="text" class="form-control" id="aadhar" name="aadhar">
+          </div>
+        <div class="col-md-6">
+          <label for="mobile" class="form-label">Mobile Number</label>
+          <input type="text" class="form-control" id="mobile" name="mobile">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              I guarantee that the above information is correct and to the best of my knowledge.
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+{% endblock body %}
+

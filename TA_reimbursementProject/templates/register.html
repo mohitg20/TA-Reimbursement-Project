@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+       
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                background: #60a3bc !important;
+            }
+            .user_card {
+                height: 400px;
+                width: 350px;
+                margin-top: auto;
+                margin-bottom: auto;
+                background: #f39c12;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                padding: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                border-radius: 5px;
+        
+            }
+            .brand_logo_container {
+                position: absolute;
+                height: 170px;
+                width: 170px;
+                top: -75px;
+                border-radius: 50%;
+                background: #60a3bc;
+                padding: 10px;
+                text-align: center;
+            }
+            .brand_logo {
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                border: 2px solid white;
+            }
+            .form_container {
+                margin-top: 100px;
+            }
+            .login_btn {
+                width: 100%;
+                background: #c0392b !important;
+                color: white !important;
+            }
+            .login_btn:focus {
+                box-shadow: none !important;
+                outline: 0px !important;
+            }
+            .login_container {
+                padding: 0 2rem;
+            }
+            .input-group-text {
+                background: #c0392b !important;
+                color: white !important;
+                border: 0 !important;
+                border-radius: 0.25rem 0 0 0.25rem !important;
+            }
+            .input_user,
+            .input_pass:focus {
+                box-shadow: none !important;
+                outline: 0px !important;
+            }
+            .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+                background-color: #c0392b !important;
+            }
+        </style>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="container h-100">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <div class="brand_logo_container">
+                            <img src="https://i.ibb.co/VjmHmNy/redlogo.png" class="brand_logo" alt="Logo">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center form_container">
+        <h3>Register</h3>
+        <form action="/register" method="post">
+            {% csrf_token %}
+            <label for="">Username</label>
+            <input type="text" id="username" name="username" placeholder="Create a Username(only letters and numbers)" Required>
+            <br><br>
+            <label for="">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your IIT-K mail id" Required>
+            <br><br>
+            <label for="">Password</label>
+            <input type="password" id="pass1" name="pass1" placeholder="Create a Password" Required>
+            <br><br>
+            <label for="">Confirm Password</label>
+            <input type="password" id="pass2" name="pass2" placeholder="Confirm your Password" Required>
+            <br><br>
+            <button type="submit">Register</button>
+        </form>
+    <script src="" async defer></script>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+
