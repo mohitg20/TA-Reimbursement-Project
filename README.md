@@ -16,7 +16,7 @@ which comprises of-:
 2. TA_reimbursementProject -: which is our Django project containing-:
     (i) settings.py which maintains various settings and also used for registering apps in Django project.
     (ii) urls.py which contains url to various app of our project.
-    and so on.. which contains standard applications of Django.
+    and so on.. containing standard applications of Django.
 
 3. templates -: which is our HTML source files named as-:
     (i) application -: which contains Application Form
