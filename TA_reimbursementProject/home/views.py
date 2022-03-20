@@ -1,3 +1,4 @@
+from xml.etree.ElementTree import tostring
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout,login,authenticate
@@ -219,10 +220,13 @@ def application(request):
     #     return render(request,'user_profileBase.html',context={'userdata':request.user})
     return render(request,'application.html')
 
-# def pending_requests(request):
-#     plz=Application.objects.get(email="user@iitk.ac.in")
-#     print(plz.email)
-#     # return render(request,'pending.html',{'AppData':plz})
+def pending_requests(request):
+    list1 = []
+    for i in Application.objects.all():
+        plz=Application.objects.get(email=i)
+        list1.append(plz.__dict__)
+    return render(request,'pending.html',context={'AppData':list1})
+    
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
