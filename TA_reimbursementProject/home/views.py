@@ -37,7 +37,10 @@ def loginUser(request):
         if user is not None:
             login(request,user)
             messages.success(request,"Login sucessfull!")
-            return render(request,"home.html",context={'user':user})
+            if user.groups.filter(name="TrialOffice"):
+                return render(request,"adminOffice.html",context={'user':user})
+            else: 
+                return render(request,"home.html",context={'user':user})
             # A backend authenticated the credentials
         else:
             messages.warning(request,"Incorrect Credentials")
@@ -65,6 +68,7 @@ def status(request):
 def form(request):
     if request.method =="POST":
         institute=request.POST.get('institute')
+        email=request.POST.get('email')
         project_number=request.POST.get('project_number')
         name=request.POST.get('name')
         roll_number=request.POST.get('roll_number')
@@ -119,8 +123,9 @@ def form(request):
         
         
         # email=request.POST.get('email')
-        form=Form(institute=institute,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
+        form=Form(institute=institute,email=email,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
         form.save()
+        return render(request,'status.html')
     return render(request,'form.html')    
 
 def registerUser(request):
@@ -167,6 +172,7 @@ def user_profile(request):
 def application(request):
     if request.method =="POST":
         block_yr=request.POST.get('block_yr')
+        email=request.POST.get('email')
         joining=request.POST.get('joining')
         basic_pay=request.POST.get('basic_pay')
         Name=request.POST.get('Name')
@@ -188,8 +194,9 @@ def application(request):
         Name3=request.POST.get('Name3')
         Age3=request.POST.get('Age3')
         advance=request.POST.get('advance')
-        application=Application(block_yr=block_yr,joining=joining,basic_pay=basic_pay,Name=Name,Designation=Designation,section=section,avail=avail,duration=duration,departure=departure,nature=nature,Purpose=Purpose,place=place,place1=place1,address=address,mode=mode,Name1=Name1,Age1=Age1,Name2=Name2,Age2=Age2,Name3=Name3,Age3=Age3,advance=advance)
+        application=Application(block_yr=block_yr,email=email,joining=joining,basic_pay=basic_pay,Name=Name,Designation=Designation,section=section,avail=avail,duration=duration,departure=departure,nature=nature,Purpose=Purpose,place=place,place1=place1,address=address,mode=mode,Name1=Name1,Age1=Age1,Name2=Name2,Age2=Age2,Name3=Name3,Age3=Age3,advance=advance)
         application.save()
+        return render(request,'status.html')
     return render(request,'application.html')
 
 
