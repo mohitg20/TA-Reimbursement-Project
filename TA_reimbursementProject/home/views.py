@@ -61,8 +61,8 @@ def home(request):
     }
     return render(request,'home.html',context)    
 
-def pending(request):
-    return render(request,'pending.html')    
+# def pending(request):
+#     return render(request,'pending.html')    
 
 def status(request):
     dt=Form.objects.filter(email=request.user.email)
