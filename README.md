@@ -34,3 +34,20 @@ which comprises of-:
 4. db.sqlite3 -: SQLITE3 File which is the standard database of Django framework.
 
 5. manage.py -: Inbulit python file containing basic implementation of framework.
+
+6. ## How to Run 
+Clone the repository-
+```
+git clone https://github.com/mohitg20/TA-Reimbursement-Project.git
+cd TA_reimbursementProject
+```
+```
+```
+Install all the dependencies-
+```
+```
+Run the server-
+```
+python manage.py runserver
+```
+Go on the localhost web address which must have been printed on the terminal
