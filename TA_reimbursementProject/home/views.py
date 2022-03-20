@@ -59,6 +59,9 @@ def home(request):
     }
     return render(request,'home.html',context)    
 
+def pending(request):
+    return render(request,'pending.html')    
+
 def status(request):
     context={
         'user':request.user
@@ -198,6 +201,11 @@ def application(request):
         application.save()
         return render(request,'status.html')
     return render(request,'application.html')
+
+# def pending_requests(request):
+#     plz=Application.objects.get(email="user@iitk.ac.in")
+#     print(plz.email)
+#     # return render(request,'pending.html',{'AppData':plz})
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
