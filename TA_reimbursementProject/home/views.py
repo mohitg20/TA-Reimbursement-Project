@@ -240,12 +240,9 @@ def pending_requests(request):
         plz=Application.objects.get(email=i)
         list1.append(plz.__dict__)
     return render(request,'pending.html',context={'AppData':list1})
-<<<<<<< HEAD
     
 
 
-=======
->>>>>>> 72dd79f17c5fbf2f7de41929a97b40c6e6625d1d
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'password_reset.html'
     email_template_name = 'password_reset_email.html'
