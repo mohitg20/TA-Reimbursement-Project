@@ -29,6 +29,7 @@ which comprises of-:
     (vii) register -: which is our register page for registering new users.
     (viii) status -: This is the page for viewing status of user.
     (ix) user_profile -: this is profile of registered user.
+    (x) filledform -: displays the filled form
 
 4. db.sqlite3 -: SQLITE3 File which is the standard database of Django framework.
 
