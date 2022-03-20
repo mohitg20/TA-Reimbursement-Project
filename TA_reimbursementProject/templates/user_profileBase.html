@@ -39,12 +39,14 @@
           </div>
           <div class="col-md-4">
             <label for="ACtype" class="form-label">Type of Bank A/C</label>
-            <select id="ACtype" class="form-select" name="ACtype">
+            <input type="text" class="form-control" id="ACtype" name="ACtype">
+
+            {% comment %} <select id="ACtype" class="form-select" name="ACtype">
               <option selected>Select the type of Bank Account</option>
               <option value="1">Current Account</option>
               <option value="2">Savings Account</option>
               <option value="3">Salary Account</option>
-            </select>
+            </select> {% endcomment %}
           </div>
           <div class="col-md-6">
             <label for="AC" class="form-label">Bank A/C Number</label>
