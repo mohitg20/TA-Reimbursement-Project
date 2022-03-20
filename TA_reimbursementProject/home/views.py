@@ -219,24 +219,12 @@ def application(request):
     else:
         return render(request,'applicationBase.html',context={'userdata':request.user})
     return render(request,'application.html')
-
-<<<<<<< HEAD
-# def pending_requests(request):
-
-#     plz=Application.objects.get(email="user@iitk.ac.in")
-#     print(plz.email)
-#     # return render(request,'pending.html',{'AppData':plz})
-=======
 def pending_requests(request):
     list1 = []
     for i in Application.objects.all():
         plz=Application.objects.get(email=i)
         list1.append(plz.__dict__)
     return render(request,'pending.html',context={'AppData':list1})
-    
->>>>>>> 8f63038fb80b1a3afc80fdcef990baa869ee3008
-
-
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'password_reset.html'
     email_template_name = 'password_reset_email.html'
