@@ -51,7 +51,11 @@ def home(request):
     }
     return render(request,'home.html',context)    
 
-
+def status(request):
+    context={
+        'user':request.user
+    }
+    return render(request,'status.html',context)    
 
 def form(request):
     if request.method =="POST":
@@ -149,3 +153,30 @@ def user_profile(request):
     return render(request,'user_profile.html',context={'user':request.user})
 
 
+def application(request):
+    if request.method =="POST":
+        block_yr=request.POST.get('block_yr')
+        joining=request.POST.get('joining')
+        basic_pay=request.POST.get('basic_pay')
+        Name=request.POST.get('Name')
+        Designation=request.POST.get('Designation')
+        section=request.POST.get('section')
+        avail=request.POST.get('avail')
+        duration=request.POST.get('duration')
+        departure=request.POST.get('departure')
+        nature=request.POST.get('nature')
+        Purpose=request.POST.get('Purpose')
+        place=request.POST.get('place')
+        place1=request.POST.get('place1')
+        address=request.POST.get('address')
+        mode=request.POST.get('mode')
+        Name1=request.POST.get('Name1')
+        Age1=request.POST.get('Age1')
+        Name2=request.POST.get('Name2')
+        Age2=request.POST.get('Age2')
+        Name3=request.POST.get('Name3')
+        Age3=request.POST.get('Age3')
+        advance=request.POST.get('advance')
+        application=Application(block_yr=block_yr,joining=joining,basic_pay=basic_pay,Name=Name,Designation=Designation,section=section,avail=avail,duration=duration,departure=departure,nature=nature,Purpose=Purpose,place=place,place1=place1,address=address,mode=mode,Name1=Name1,Age1=Age1,Name2=Name2,Age2=Age2,Name3=Name3,Age3=Age3,advance=advance)
+        application.save()
+    return render(request,'application.html')

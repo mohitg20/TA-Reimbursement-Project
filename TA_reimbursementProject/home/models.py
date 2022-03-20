@@ -66,4 +66,27 @@ class User_profile(models.Model):
     aadhar = models.CharField(max_length=15)
     mobile = models.CharField(max_length=15)
 
-
+class Application(models.Model):
+    block_yr=models.IntegerField(default=0)
+    joining=models.IntegerField(default=0)
+    basic_pay=models.IntegerField(default=0)
+    Name=models.CharField(default='NA',max_length=122)
+    Designation=models.CharField(default='NA',max_length=122)
+    section=models.CharField(default='NA',max_length=122)
+    avail=models.CharField(default='NA',max_length=122)
+    duration=models.IntegerField(default=0)
+    departure=models.IntegerField(default=0)
+    nature=models.CharField(default='NA',max_length=122)
+    Purpose=models.CharField(default='NA',max_length=122)
+    place=models.CharField(default='NA',max_length=122)
+    place1=models.CharField(default='NA',max_length=122)
+    address=models.CharField(default='NA',max_length=122)
+    mode=models.CharField(default='NA',max_length=122)
+    Name1=models.CharField(default='NA',max_length=122)
+    Age1=models.IntegerField(default=0)
+    Name2=models.CharField(default='NA',max_length=122)
+    Age2=models.IntegerField(default=0)
+    Name3=models.CharField(default='NA',max_length=122)
+    Age3=models.IntegerField(default=0)
+    advance=models.IntegerField(default=0)
+    
