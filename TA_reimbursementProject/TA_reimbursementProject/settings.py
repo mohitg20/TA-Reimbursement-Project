@@ -124,7 +124,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+#Added manually
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+LOGIN_URL="/login"

@@ -7,9 +7,13 @@
     <div class="container">
     <form class="row g-3" method="post" action="/user_profile">
       {% csrf_token %}
+      <div class="col-md-6">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name">
+      </div>
         <div class="col-md-6">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email">
+          <input type="email" class="form-control" id="email" name="email" value="{{user.email}}" readonly>
         </div>
         <div class="col-md-6">
           <label for="rollno" class="form-label">Roll No./PF No.</label>
