@@ -41,11 +41,7 @@ Clone the repository-
 git clone https://github.com/mohitg20/TA-Reimbursement-Project.git
 cd TA_reimbursementProject
 ```
-```
-```
-Install all the dependencies-
-```
-```
+Install all the dependencies
 Run the server-
 ```
 python manage.py runserver
