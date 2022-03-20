@@ -2,4 +2,16 @@
 {% block title %} Home {% endblock title %}
 {% block body %} 
 <h1>Welcome {{user.email}} ! You can view the status of your application here.</h1> 
+<ul class="list-group">
+  {% if claim %}
+    {% for form in claim %}
+    <li class="list-group-item list-group-item-{{form.status|yesno:"success,danger,info"}}">Claim-Bill | Application : {{form.purpose}} Status : {{form.status|yesno:"Congratulations! Your application is verified,Verfication still under process,INVALID status"}}</li>
+    {% endfor %}
+    {% endif %}
+{% if application%}
+    {% for form in application %}
+    <li class="list-group-item list-group-item-{{form.status|yesno:"success,danger,info"}}">Application-Form | Application : {{form.purpose}} Status : {{form.status|yesno:"Congratulations! Your application is verified,Verfication still under process,INVALID status"}}</li>
+    {% endfor %}
+    {% endif %}
+</ul>
 {% endblock body %}
