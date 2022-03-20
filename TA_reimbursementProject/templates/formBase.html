@@ -1,29 +1,29 @@
 {% extends 'base.html' %}
 {% block title %}Claim Bill{% endblock title %}
 {% block body %} 
-<h4 style="text-align: center;">Indian Institute of Technology, Kanpur</h4>
+<h4>Indian Institute of Technology, Kanpur</h4>
 
-<h4 style="text-align: center;">Travelling Allowance Bill</h4>
+<h4>Travelling Allowance Bill</h4>
 <br>
-<form method="POST" action="/form" style="margin: 0 auto; width: 800px;">
+<form method="POST" action="/form" >
 {% csrf_token %}
 <table>
     <tr>
         <td>
             <div class="form-group mb-3" > 
-                <label class="form-label" for="institute">Institute A/C <b>/</b> CPDA</label>
-                <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute A/C or CPDA">
+                <label class="form-label" for="institute">institute</label>
+                <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute name">
             </div>
         </td>
         <td>
             <div class="form-group mb-3" > 
                 <label class="form-label" for="email">Email</label>
-                <input readonly value="{{username.email}}" class="form-control" type="email" id="email" name="email"  placeholder="Enter your email">
+                <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email" value="{{userdata.email}}" readonly>
             </div>
         </td>
         <td>
             <div class="form-group mb-3" >
-                <label class="form-label" for="project_number">Project Number</label>
+                <label class="form-label" for="project_number">project_number</label>
                 <input class="form-control" type="number" id="project_number" name="project_number" placeholder="Enter project_number">
             </div>
         </td>
@@ -32,40 +32,41 @@
         <td>
             <div class="form-group mb-3" >
                 <label class="form-label" for="name">Name</label>
-                <input readonly value="{{username.name}}" class="form-control" type="text" id="name" name="name" placeholder="Enter your name">
+                <input class="form-control" type="text" id="name" name="name" placeholder="Enter your name">
             </div>
         </td>
         <td>
             <div class="form-group mb-3" >
-                <label class="form-label" for="roll_number">Roll No. / PF No.</label>
-                <input readonly value="{{username.rollno}}" class="form-control" type="number" id="roll_number" name="roll_number" placeholder="Enter your roll number">
-            </div>
-        </td>
-        <td>
-            <div class="form-group mb-3" >
-                <label class="form-label" for="designation">Designation</label>
-                <input readonly value="{{username.designation}}" class="form-control" type="text" id="designation" name="designation" placeholder="Your designation">
+                <label class="form-label" for="roll_number">roll_number</label>
+                <input class="form-control" type="number" id="roll_number" name="roll_number" placeholder="Enter your roll_number">
             </div>
         </td>
     </tr>
     <tr>
-        
         <td>
             <div class="form-group mb-3" >
-                <label class="form-label" for="department">Department</label>
-                <input readonly value="{{username.department}}" class="form-control" type="text" id="department" name="department" placeholder="Enter your department name">
-            </div> 
-        </td>
-        <td>
-            <div class="form-group mb-3" >
-                <label class="form-label" for="pay_band">Pay Band</label>
-                <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="Enter your pay band">
+                <label class="form-label" for="designation">designation</label>
+                <input class="form-control" type="text" id="designation" name="designation" placeholder="designation">
             </div>
         </td>
         <td>
             <div class="form-group mb-3" >
-                <label class="form-label" for="purpose">Purpose</label>
-                <input class="form-control" type="text" id="purpose" name="purpose" placeholder="Enterurpose of journey">
+                <label class="form-label" for="department">department</label>
+                <input class="form-control" type="text" id="department" name="department" placeholder="Enter your department name">
+            </div> 
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group mb-3" >
+                <label class="form-label" for="pay_band">pay_band</label>
+                <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="pay_band">
+            </div>
+        </td>
+        <td>
+            <div class="form-group mb-3" >
+                <label class="form-label" for="purpose">purpose</label>
+                <input class="form-control" type="text" id="purpose" name="purpose" placeholder="purpose of journey">
             </div>
         </td>
     </tr>
@@ -181,8 +182,8 @@
 </table> 
 <br>
 <div class="col-md-6">
-    <label for="drivelink" class="form-label">Drive Link (with view access)</label>
-    <input type="text" class="form-control" id="drivelink" name="drivelink" placeholder="Drive Link of a folder containing all the receipts and tickets" >
+    <label for="drivelink" class="form-label">Drive Link with view access</label>
+    <input type="text" class="form-control" id="drivelink" name="drivelink" placeholder="Drive Link should contain all the receipts and tickets" >
   </div>
 <br>
 <h6>Details of Family Members(in case of LTC or Home town concession)</h6>
@@ -374,9 +375,6 @@
     <label class="form-label" >Upload Documents</label>
     <input class="form-control" type="file" id="images" required name="images" multiple class="form-control-file">
 </div> {% endcomment %}
-{% comment %} <button type="submit">Submit</button> {% endcomment %}
-<div class="col-12" style="padding: 20px 0;">
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </div> 
+<button type="submit">Submit</button>
 </form>
 {% endblock body %}
