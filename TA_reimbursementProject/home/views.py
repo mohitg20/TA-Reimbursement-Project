@@ -59,6 +59,9 @@ def home(request):
     }
     return render(request,'home.html',context)    
 
+def pending(request):
+    return render(request,'pending.html')    
+
 def status(request):
     context={
         'user':request.user
@@ -141,7 +144,7 @@ def registerUser(request):
             return render(request,"login.html")
         else :
             for value in form.errors.values():
-                messages.error(request,value)
+                messages.info(request,value)
     context = {'form':form}
     return render(request,'register.html',context)
 
@@ -206,6 +209,11 @@ def application(request):
     else:
         return render(request,'user_profileBase.html',context={'userdata':request.user})
     # return render(request,'application.html')
+
+# def pending_requests(request):
+#     plz=Application.objects.get(email="user@iitk.ac.in")
+#     print(plz.email)
+#     # return render(request,'pending.html',{'AppData':plz})
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):

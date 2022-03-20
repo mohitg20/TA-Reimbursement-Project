@@ -1,0 +1,12 @@
+{% extends 'officebase.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %} 
+<h3>Pending application requests : </h3> 
+<table>
+    {% for event in AppData%}
+     <strong> {{event}}</strong>
+    {% endfor %}
+
+  </table>
+{% endblock body %}
+
