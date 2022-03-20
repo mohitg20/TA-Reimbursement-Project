@@ -183,7 +183,7 @@ def user_profile(request):
     else:
         return render(request,'user_profileBase.html',context={'userdata':request.user})
 
-
+ 
 def application(request):
     if request.method =="POST":
         block_yr=request.POST.get('block_yr')
