@@ -141,7 +141,7 @@ def registerUser(request):
             return render(request,"login.html")
         else :
             for value in form.errors.values():
-                messages.error(request,value)
+                messages.info(request,value)
     context = {'form':form}
     return render(request,'register.html',context)
 
