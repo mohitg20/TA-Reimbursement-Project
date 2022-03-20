@@ -1,3 +1,4 @@
+import email
 from xml.etree.ElementTree import tostring
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -64,9 +65,14 @@ def pending(request):
     return render(request,'pending.html')    
 
 def status(request):
+    dt=Form.objects.filter(email=request.user.email)
+    dt2=Application.objects.filter(email=request.user.email)
     context={
-        'user':request.user
+        'user':request.user,
+        'claim' : dt,
+        'application' : dt2
     }
+    # print(request.user.email,dt[0].purpose)
     return render(request,'status.html',context)    
 
 def form(request):
@@ -133,12 +139,13 @@ def form(request):
     if(Form.objects.filter(email=request.user.email).exists()):
         plz = Form.objects.get(email=request.user.email)
         return render(request,'filledform.html',context={'username':plz})
-    if User_profile.objects.filter(email=request.user.email).exists():
-        plz=User_profile.objects.get(email=request.user.email)
-        # print(plz.email)
-        return render(request,'form.html',context={'username':plz})
     else:
-        return render(request,'formBase.html',context={'userdata':request.user})
+        if User_profile.objects.filter(email=request.user.email).exists():
+            plz=User_profile.objects.get(email=request.user.email)
+            # print(plz.email)
+            return render(request,'form.html',context={'username':plz})
+        else:
+            return render(request,'formBase.html',context={'userdata':request.user})
         # return render(request,'status.html')
     # return render(request,'form.html')    
 
@@ -183,7 +190,7 @@ def user_profile(request):
     else:
         return render(request,'user_profileBase.html',context={'userdata':request.user})
 
-
+ 
 def application(request):
     if request.method =="POST":
         block_yr=request.POST.get('block_yr')
@@ -219,15 +226,26 @@ def application(request):
 #     plz=Application.objects.get(email="user@iitk.ac.in")
 #     print(plz.email)
 #     # return render(request,'pending.html',{'AppData':plz})
+    if User_profile.objects.filter(email=request.user.email).exists():
+        plz=User_profile.objects.get(email=request.user.email)
+        # print(plz.email)
+        return render(request,'application.html',context={'username':plz})
+    else:
+        return render(request,'applicationBase.html',context={'username':request.user})
+    return render(request,'application.html')
+
 def pending_requests(request):
     list1 = []
     for i in Application.objects.all():
         plz=Application.objects.get(email=i)
         list1.append(plz.__dict__)
     return render(request,'pending.html',context={'AppData':list1})
+<<<<<<< HEAD
     
 
 
+=======
+>>>>>>> 72dd79f17c5fbf2f7de41929a97b40c6e6625d1d
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'password_reset.html'
     email_template_name = 'password_reset_email.html'
@@ -236,4 +254,4 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       "if an account exists with the email you entered. You should receive them shortly." \
                       " If you don't receive an email, " \
                       "please make sure you've entered the address you registered with, and check your spam folder."
-    success_url = reverse_lazy('login') #Check
+    success_url = reverse_lazy('login')

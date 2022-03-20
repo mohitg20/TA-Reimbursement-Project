@@ -53,7 +53,7 @@ class Form(models.Model):
     amt3=models.CharField(default='' , max_length=122)
     amt4=models.CharField(default='' , max_length=122)
     amt5=models.CharField(default='' , max_length=122)
-
+    status=models.BooleanField(default=False)
     def __str__(self):
         return self.email
 
@@ -96,5 +96,6 @@ class Application(models.Model):
     Name3=models.CharField(default='NA',max_length=122)
     Age3=models.CharField(default='' , max_length=122)
     advance=models.CharField(default='' , max_length=122)
+    status=models.BooleanField(default=False)
     def __str__(self):
         return self.email
