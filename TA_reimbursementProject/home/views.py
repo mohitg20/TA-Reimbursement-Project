@@ -22,7 +22,7 @@ from django.contrib.auth.forms import UserCreationForm
 def index(request):
     if request.user.is_authenticated:
         # Do something for authenticated users.
-        return render(request,'index.html')
+        return redirect('/home')
     else:
         # Do something for anonymous users.
         return redirect("/login")
@@ -155,7 +155,13 @@ def user_profile(request):
         mobile=request.POST.get('mobile')
         user=User_profile(name=name, email=email, rollno=rollno, designation=designation,department=department,bankname=bankname,ACtype=ACtype,AC=AC,IFSC=IFSC,aadhar=aadhar,mobile=mobile)
         user.save()
-    return render(request,'user_profile.html',context={'user':request.user})
+    # return render(request,'user_profile.html',context={'user':request.user})
+    if User_profile.objects.filter(email=request.user.email).exists():
+        plz=User_profile.objects.get(email=request.user.email)
+        # print(plz.email)
+        return render(request,'user_profile.html',context={'userdata':plz})
+    else:
+        return render(request,'user_profileBase.html',context={'userdata':request.user})
 
 
 def application(request):
