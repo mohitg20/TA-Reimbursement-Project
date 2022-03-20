@@ -6,6 +6,7 @@ from email.policy import default
 
 class Form(models.Model):
     institute=models.CharField(max_length=122)
+    email=models.EmailField(default='user@iitk.ac.in',max_length=30,unique=True)
     project_number=models.CharField(max_length=122)
     name=models.CharField(max_length=122)
     roll_number=models.CharField(max_length=122)
@@ -67,6 +68,7 @@ class User_profile(models.Model):
 
 class Application(models.Model):
     block_yr=models.CharField(default='' , max_length=122)
+    email=models.EmailField(default='user@iitk.ac.in',max_length=30,unique=True)
     joining=models.CharField(default='' , max_length=122)
     basic_pay=models.CharField(default='' , max_length=122)
     Name=models.CharField(default='NA',max_length=122)
