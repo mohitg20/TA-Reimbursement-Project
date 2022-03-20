@@ -2,11 +2,142 @@
 {% block title %} Home {% endblock title %}
 {% block body %} 
 <h3>Pending application requests : </h3> 
-<table>
+<table style="margin: 0 auto; ">
+
+  <tr>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="id">ID</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="email">Email</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="joining">PF No./Roll No.</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="basic_pay">Basic Pay</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="name">Name</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="designation">Designation</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="department">Department</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="purpose">Purpose</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="mode">Mode</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="advance">Advance</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="accept">Accept</label>
+    </div>
+    </td>
+    <td>
+      <div class="form-group mb-3" > 
+        <label class="form-label" for="reject">Reject</label>
+    </div>
+    </td>
+  </tr>
+
     {% for event in AppData%}
-     <strong> {{event}}</strong>
+
+     {% comment %} <strong> {{event}}</strong> {% endcomment %}
+    <tr>
+        <td>
+            <div class="form-group mb-3" >
+                <input class="form-control" type="text" id="id" name="id" value="{{event.id}}">
+            </div>
+        </td>
+        <td>
+            <div class="form-group mb-3" >
+                <input class="form-control" type="text" id="id" name="id" value="{{event.email}}">
+            </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.joining}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.basic_pay}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.Name}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.Designation}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.section}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.Purpose}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.mode}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input class="form-control" type="text" id="id" name="id" value="{{event.advance}}">
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              {% comment %} <input type="button" value="" /> {% endcomment %}
+              <button style="padding: 0px;border-width: 0px;">
+              <span style="font-size: 30px;">&#9989;</span>
+              </button>
+          </div>
+        </td>
+        <td>
+          <div class="form-group mb-3" >
+              <input type="button" value="x" />
+          </div>
+        </td>
+    </tr>
+
     {% endfor %}
 
-  </table>
+</table>
 {% endblock body %}
 
