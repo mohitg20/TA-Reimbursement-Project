@@ -22,6 +22,7 @@ class Form(models.Model):
     total=models.CharField( default='', max_length=122)
     less_advance=models.CharField( default='', max_length=122)
     net=models.CharField( default='', max_length=122)
+    drivelink=models.CharField(default="NA",max_length=200)
     name1=models.CharField(default='NA', max_length=122)
     name2=models.CharField(default='NA', max_length=122)
     name3=models.CharField(default='NA', max_length=122)
@@ -53,6 +54,9 @@ class Form(models.Model):
     amt4=models.CharField(default='' , max_length=122)
     amt5=models.CharField(default='' , max_length=122)
 
+    def __str__(self):
+        return self.email
+
 class User_profile(models.Model):
     name = models.CharField(max_length=30)
     email =models.EmailField(max_length=30,unique=True)
@@ -65,6 +69,8 @@ class User_profile(models.Model):
     IFSC = models.CharField(max_length=20)
     aadhar = models.CharField(max_length=15)
     mobile = models.CharField(max_length=15)
+    def __str__(self):
+        return self.email
 
 class Application(models.Model):
     block_yr=models.CharField(default='' , max_length=122)
@@ -90,4 +96,5 @@ class Application(models.Model):
     Name3=models.CharField(default='NA',max_length=122)
     Age3=models.CharField(default='' , max_length=122)
     advance=models.CharField(default='' , max_length=122)
-    
+    def __str__(self):
+        return self.email
