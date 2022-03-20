@@ -12,7 +12,7 @@ urlpatterns = [
     path('home',views.home, name="home" ),
     path('application_status',views.status, name="application_status" ),
     path('application_form',views.application, name="application_form" ),
-    path('pending',views.pending, name="pending" ),
+    path('pending',views.pending_requests, name="pending" ),
     # add forget password
 
 ]
