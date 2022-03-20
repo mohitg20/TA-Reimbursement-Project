@@ -5,7 +5,7 @@
 
 <h4>Travelling Allowance Bill</h4>
 <br>
-<form method="POST" action="{%url 'form'%}" >
+<form method="POST" action="/form" >
 {% csrf_token %}
 <table>
     <tr>
@@ -13,6 +13,12 @@
             <div class="form-group mb-3" > 
                 <label class="form-label" for="institute">institute</label>
                 <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute name">
+            </div>
+        </td>
+        <td>
+            <div class="form-group mb-3" > 
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="email" placeholder="Enter your email">
             </div>
         </td>
         <td>
@@ -31,7 +37,7 @@
         </td>
         <td>
             <div class="form-group mb-3" >
-                <label class="form-label" for="number">roll_number</label>
+                <label class="form-label" for="roll_number">roll_number</label>
                 <input class="form-control" type="number" id="roll_number" name="roll_number" placeholder="Enter your roll_number">
             </div>
         </td>
@@ -176,7 +182,6 @@
 </table> 
 <br>
 
-</form>
 <br>
 <h6>Details of Family Members(in case of LTC or Home town concession)</h6>
 <br>
@@ -206,7 +211,7 @@
             <input class="form-control" type="text" id="name1" name="name1" placeholder="Enter your name">
         </td>
         <td>
-            <input class="form-control" type="date" id="date1" name="date1" placeholder="Enter Date of Birth">
+            <input class="form-control" type="text" id="date1" name="date1" placeholder="Enter Date of Birth in dd/mm/yyyy format">
         </td>
         <td>
             <input class="form-control" type="number" id="age1" name="age1" placeholder="Enter your age">
@@ -223,13 +228,13 @@
             <input class="form-control" type="text" id="name2" name="name2" placeholder="Enter your name">
         </td>
         <td>
-            <input class="form-control" type="date" id="date2" name="date2" placeholder="Enter Date of Birth">
+            <input class="form-control" type="text" id="date2" name="date2" placeholder="Enter Date of Birth in dd/mm/yyyy format">
         </td>
         <td>
             <input class="form-control" type="number" id="age2" name="age2" placeholder="Enter your age">
         </td>
         <td>
-            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel2" name="rel2" placeholder="Relationship">
         </td>
     </tr>
     <tr>
@@ -240,13 +245,13 @@
             <input class="form-control" type="text" id="name3" name="name3" placeholder="Enter your name">
         </td>
         <td>
-            <input class="form-control" type="date" id="date3" name="date3" placeholder="Enter Date of Birth">
+            <input class="form-control" type="text" id="date3" name="date3" placeholder="Enter Date of Birth in dd/mm/yyyy format">
         </td>
         <td>
             <input class="form-control" type="number" id="age3" name="age3" placeholder="Enter your age">
         </td>
         <td>
-            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel3" name="rel3" placeholder="Relationship">
         </td>
     </tr>
     <tr>
@@ -257,13 +262,13 @@
             <input class="form-control" type="text" id="name4" name="name4" placeholder="Enter your name">
         </td>
         <td>
-            <input class="form-control" type="date" id="date4" name="date4" placeholder="Enter Date of Birth">
+            <input class="form-control" type="text" id="date4" name="date4" placeholder="Enter Date of Birth in dd/mm/yyyy format">
         </td>
         <td>
             <input class="form-control" type="number" id="age4" name="age4" placeholder="Enter your age">
         </td>
         <td>
-            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel4" name="rel4" placeholder="Relationship">
         </td>
     </tr>
     <tr>
@@ -274,13 +279,13 @@
             <input class="form-control" type="text" id="name5" name="name5" placeholder="Enter your name">
         </td>
         <td>
-            <input class="form-control" type="date" id="date5" name="date5" placeholder="Enter Date of Birth">
+            <input class="form-control" type="text" id="date5" name="date5" placeholder="Enter Date of Birth in dd/mm/yyyy format">
         </td>
         <td>
             <input class="form-control" type="number" id="age5" name="age5" placeholder="Enter your age">
         </td>
         <td>
-            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel5" name="rel5" placeholder="Relationship">
         </td>
     </tr>
 </table>
@@ -306,7 +311,7 @@
             1.
         </td>
         <td>
-            <input class="form-control" type="text" id="Part1" name="Part1" >
+            <input class="form-control" type="text" id="part1" name="part1" >
         </td>
         <td>
             <input class="form-control" type="number" id="amt1" name="amt1" placeholder="Rs.">
@@ -318,7 +323,7 @@
             2.
         </td>
         <td>
-            <input class="form-control" type="text" id="Part2" name="Part2" >
+            <input class="form-control" type="text" id="part2" name="part2" >
         </td>
         <td>
             <input class="form-control" type="number" id="amt2" name="amt2" placeholder="Rs.">
@@ -330,7 +335,7 @@
             3.
         </td>
         <td>
-            <input class="form-control" type="text" id="Part3" name="Part3" >
+            <input class="form-control" type="text" id="part3" name="part3" >
         </td>
         <td>
             <input class="form-control" type="number" id="amt3" name="amt3" placeholder="Rs.">
@@ -342,7 +347,7 @@
             4.
         </td>
         <td>
-            <input class="form-control" type="text" id="Part4" name="Part4" >
+            <input class="form-control" type="text" id="part4" name="part4" >
         </td>
         <td>
             <input class="form-control" type="number" id="amt4" name="amt4" placeholder="Rs.">
@@ -354,7 +359,7 @@
             5.
         </td>
         <td>
-            <input class="form-control" type="text" id="Part5" name="Part5" >
+            <input class="form-control" type="text" id="part5" name="part5" >
         </td>
         <td>
             <input class="form-control" type="number" id="amt5" name="amt5" placeholder="Rs.">

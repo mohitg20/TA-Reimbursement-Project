@@ -10,6 +10,8 @@ urlpatterns = [
     path('user_profile',views.user_profile, name="user_profile" ),
     path('form',views.form, name="form" ),
     path('home',views.home, name="home" ),
+    path('application_status',views.status, name="application_status" ),
+    path('application_form',views.application, name="application_form" ),
     # add forget password
 
 ]
