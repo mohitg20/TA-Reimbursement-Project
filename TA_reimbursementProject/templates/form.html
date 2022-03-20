@@ -1,66 +1,66 @@
 {% extends 'base.html' %}
-
+{% block title %}Claim Bill{% endblock title %}
 {% block body %} 
 <h4>Indian Institute of Technology, Kanpur</h4>
 
 <h4>Travelling Allowance Bill</h4>
 <br>
-<form method="POST" action="/form" >
+<form method="POST" action="{%url 'form'%}" >
 {% csrf_token %}
 <table>
     <tr>
         <td>
-            <div class="form-group"> 
-                <label for="institute">institute</label>
-                <input type="text" id="institute" name="institute" placeholder="Enter institute name">
+            <div class="form-group mb-3" > 
+                <label class="form-label" for="institute">institute</label>
+                <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute name">
             </div>
         </td>
         <td>
-            <div class="form-group">
-                <label for="project_number">project_number</label>
-                <input type="number" id="project_number" name="project_number" placeholder="Enter project_number">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name">
-            </div>
-        </td>
-        <td>
-            <div class="form-group">
-                <label for="number">roll_number</label>
-                <input type="number" id="roll_number" name="roll_number" placeholder="Enter your roll_number">
+            <div class="form-group mb-3" >
+                <label class="form-label" for="project_number">project_number</label>
+                <input class="form-control" type="number" id="project_number" name="project_number" placeholder="Enter project_number">
             </div>
         </td>
     </tr>
     <tr>
         <td>
-            <div class="form-group">
-                <label for="designation">designation</label>
-                <input type="text" id="designation" name="designation" placeholder="designation">
+            <div class="form-group mb-3" >
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Enter your name">
             </div>
         </td>
         <td>
-            <div class="form-group">
-                <label for="department">department</label>
-                <input type="text" id="department" name="department" placeholder="Enter your department name">
+            <div class="form-group mb-3" >
+                <label class="form-label" for="number">roll_number</label>
+                <input class="form-control" type="number" id="roll_number" name="roll_number" placeholder="Enter your roll_number">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group mb-3" >
+                <label class="form-label" for="designation">designation</label>
+                <input class="form-control" type="text" id="designation" name="designation" placeholder="designation">
+            </div>
+        </td>
+        <td>
+            <div class="form-group mb-3" >
+                <label class="form-label" for="department">department</label>
+                <input class="form-control" type="text" id="department" name="department" placeholder="Enter your department name">
             </div> 
         </td>
     </tr>
     <tr>
         <td>
-            <div class="form-group">
-                <label for="pay_band">pay_band</label>
-                <input type="number" id="pay_band" name="pay_band" placeholder="pay_band">
+            <div class="form-group mb-3" >
+                <label class="form-label" for="pay_band">pay_band</label>
+                <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="pay_band">
             </div>
         </td>
         <td>
-            <div class="form-group">
-                <label for="purpose">purpose</label>
-                <input type="text" id="purpose" name="purpose" placeholder="purpose of journey">
+            <div class="form-group mb-3" >
+                <label class="form-label" for="purpose">purpose</label>
+                <input class="form-control" type="text" id="purpose" name="purpose" placeholder="purpose of journey">
             </div>
         </td>
     </tr>
@@ -77,8 +77,8 @@
             Total travel cost
         </td>  
         <td>
-            <div class="form-group">
-                <input type="number" id="travel_cost" name="travel_cost" placeholder="Total Travel Cost">
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="travel_cost" name="travel_cost" placeholder="Total Travel Cost">
             </div>
         </td>
     </tr> 
@@ -90,8 +90,8 @@
             Road Kms
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="road_kms" name="road_kms" placeholder="Road in kms">
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="road_kms" name="road_kms" placeholder="Road in kms">
             </div>
         </td>
     </tr>
@@ -103,8 +103,8 @@
             DA for the No. of days, hospitality availed
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="hospitality_availed" name="hospitality_availed" >
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="hospitality_availed" name="hospitality_availed" >
             </div>
         </td>
     </tr>
@@ -116,8 +116,8 @@
             DA for the No. of days, hospitality not availed
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="hospitality_not_availed" name="hospitality_not_availed" >
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="hospitality_not_availed" name="hospitality_not_availed" >
             </div>
         </td>
     </tr>
@@ -129,8 +129,8 @@
             other expenses
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="expenses" name="expenses" placeholder="other Expenses">
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="expenses" name="expenses" placeholder="other Expenses">
             </div>
         </td>
     </tr>
@@ -142,8 +142,8 @@
             Grand total
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="total" name="total" placeholder="Grand Total">
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="total" name="total" placeholder="Grand Total">
             </div>
         </td>
     </tr>
@@ -155,8 +155,8 @@
             Less Advance
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="less_advance" name="less_advance" placeholder="Less Advance">
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="less_advance" name="less_advance" placeholder="Less Advance">
             </div>
         </td>
     </tr>
@@ -168,8 +168,8 @@
             Net claim: Payable/Refundable
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="net" name="net" placeholder="Net Claim">
+            <div class="form-group mb-3" >
+                <input class="form-control" type="number" id="net" name="net" placeholder="Net Claim">
             </div>
         </td>
     </tr>
@@ -203,16 +203,16 @@
             1.
         </td>
         <td>
-            <input type="text" id="name1" name="name1" placeholder="Enter your name">
+            <input class="form-control" type="text" id="name1" name="name1" placeholder="Enter your name">
         </td>
         <td>
-            <input type="date" id="date1" name="date1" placeholder="Enter Date of Birth">
+            <input class="form-control" type="date" id="date1" name="date1" placeholder="Enter Date of Birth">
         </td>
         <td>
-            <input type="number" id="age1" name="age1" placeholder="Enter your age">
+            <input class="form-control" type="number" id="age1" name="age1" placeholder="Enter your age">
         </td>
         <td>
-            <input type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
         </td>
     </tr>
     <tr>
@@ -220,16 +220,16 @@
             2.
         </td>
         <td>
-            <input type="text" id="name2" name="name2" placeholder="Enter your name">
+            <input class="form-control" type="text" id="name2" name="name2" placeholder="Enter your name">
         </td>
         <td>
-            <input type="date" id="date2" name="date2" placeholder="Enter Date of Birth">
+            <input class="form-control" type="date" id="date2" name="date2" placeholder="Enter Date of Birth">
         </td>
         <td>
-            <input type="number" id="age2" name="age2" placeholder="Enter your age">
+            <input class="form-control" type="number" id="age2" name="age2" placeholder="Enter your age">
         </td>
         <td>
-            <input type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
         </td>
     </tr>
     <tr>
@@ -237,16 +237,16 @@
             3.
         </td>
         <td>
-            <input type="text" id="name3" name="name3" placeholder="Enter your name">
+            <input class="form-control" type="text" id="name3" name="name3" placeholder="Enter your name">
         </td>
         <td>
-            <input type="date" id="date3" name="date3" placeholder="Enter Date of Birth">
+            <input class="form-control" type="date" id="date3" name="date3" placeholder="Enter Date of Birth">
         </td>
         <td>
-            <input type="number" id="age3" name="age3" placeholder="Enter your age">
+            <input class="form-control" type="number" id="age3" name="age3" placeholder="Enter your age">
         </td>
         <td>
-            <input type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
         </td>
     </tr>
     <tr>
@@ -254,16 +254,16 @@
             4.
         </td>
         <td>
-            <input type="text" id="name4" name="name4" placeholder="Enter your name">
+            <input class="form-control" type="text" id="name4" name="name4" placeholder="Enter your name">
         </td>
         <td>
-            <input type="date" id="date4" name="date4" placeholder="Enter Date of Birth">
+            <input class="form-control" type="date" id="date4" name="date4" placeholder="Enter Date of Birth">
         </td>
         <td>
-            <input type="number" id="age4" name="age4" placeholder="Enter your age">
+            <input class="form-control" type="number" id="age4" name="age4" placeholder="Enter your age">
         </td>
         <td>
-            <input type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
         </td>
     </tr>
     <tr>
@@ -271,16 +271,16 @@
             5.
         </td>
         <td>
-            <input type="text" id="name5" name="name5" placeholder="Enter your name">
+            <input class="form-control" type="text" id="name5" name="name5" placeholder="Enter your name">
         </td>
         <td>
-            <input type="date" id="date5" name="date5" placeholder="Enter Date of Birth">
+            <input class="form-control" type="date" id="date5" name="date5" placeholder="Enter Date of Birth">
         </td>
         <td>
-            <input type="number" id="age5" name="age5" placeholder="Enter your age">
+            <input class="form-control" type="number" id="age5" name="age5" placeholder="Enter your age">
         </td>
         <td>
-            <input type="text" id="rel1" name="rel1" placeholder="Relationship">
+            <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
         </td>
     </tr>
 </table>
@@ -306,10 +306,10 @@
             1.
         </td>
         <td>
-            <input type="text" id="Part1" name="Part1" >
+            <input class="form-control" type="text" id="Part1" name="Part1" >
         </td>
         <td>
-            <input type="number" id="amt1" name="amt1" placeholder="Rs.">
+            <input class="form-control" type="number" id="amt1" name="amt1" placeholder="Rs.">
         </td>
         
     </tr>
@@ -318,10 +318,10 @@
             2.
         </td>
         <td>
-            <input type="text" id="Part2" name="Part2" >
+            <input class="form-control" type="text" id="Part2" name="Part2" >
         </td>
         <td>
-            <input type="number" id="amt2" name="amt2" placeholder="Rs.">
+            <input class="form-control" type="number" id="amt2" name="amt2" placeholder="Rs.">
         </td>
         
     </tr>
@@ -330,10 +330,10 @@
             3.
         </td>
         <td>
-            <input type="text" id="Part3" name="Part3" >
+            <input class="form-control" type="text" id="Part3" name="Part3" >
         </td>
         <td>
-            <input type="number" id="amt3" name="amt3" placeholder="Rs.">
+            <input class="form-control" type="number" id="amt3" name="amt3" placeholder="Rs.">
         </td>
         
     </tr>
@@ -342,10 +342,10 @@
             4.
         </td>
         <td>
-            <input type="text" id="Part4" name="Part4" >
+            <input class="form-control" type="text" id="Part4" name="Part4" >
         </td>
         <td>
-            <input type="number" id="amt4" name="amt4" placeholder="Rs.">
+            <input class="form-control" type="number" id="amt4" name="amt4" placeholder="Rs.">
         </td>
         
     </tr>
@@ -354,18 +354,18 @@
             5.
         </td>
         <td>
-            <input type="text" id="Part5" name="Part5" >
+            <input class="form-control" type="text" id="Part5" name="Part5" >
         </td>
         <td>
-            <input type="number" id="amt5" name="amt5" placeholder="Rs.">
+            <input class="form-control" type="number" id="amt5" name="amt5" placeholder="Rs.">
         </td>
         
     </tr>
 </table>
 
-{% comment %} <div class="form-group"> 
-    <label >Upload Documents</label>
-    <input type="file" id="images" required name="images" multiple class="form-control-file">
+{% comment %} <div class="form-group mb-3" > 
+    <label class="form-label" >Upload Documents</label>
+    <input class="form-control" type="file" id="images" required name="images" multiple class="form-control-file">
 </div> {% endcomment %}
 <button type="submit">Submit</button>
 </form>

@@ -5,7 +5,12 @@ from home.models import Form
 from unicodedata import category
 from home.models import User_profile
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+from .forms import CreateUserForm
+# from .filters import OrderFilter
+
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -26,9 +31,11 @@ def loginUser(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect("/home")
+            messages.success(request,"Login sucessfull!")
+            return render(request,"home.html",context={'user':user})
             # A backend authenticated the credentials
         else:
+            messages.warning(request,"Incorrect Credentials")
             return render(request,'login.html')
             # No backend authenticated the credentials
     return render(request,'login.html')
@@ -39,7 +46,10 @@ def logoutUser(request):
     return redirect('/login')
 
 def home(request):
-    return render(request,'home.html')    
+    context={
+        'user':request.user
+    }
+    return render(request,'home.html',context)    
 
 
 
@@ -105,19 +115,22 @@ def form(request):
     return render(request,'form.html')    
 
 def registerUser(request):
-    if request.method=="POST":
-        username=request.POST.get('username')
-        email=request.POST.get('email')
-        pass1=request.POST.get('pass1')
-        pass2=request.POST.get('pass2')
+    form = CreateUserForm()
 
-        myuser=User.objects.create_user(username,email,pass1)
-        myuser.save()
-        messages.success(request,"Your account has been created successfully")
+    if request.method == 'POST':
         
-        return redirect('/login')
-    return render(request,'register.html')
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Your account has been created successfully!")
+            return render(request,"login.html")
+        else :
+            for value in form.errors.values():
+                messages.error(request,value)
+    context = {'form':form}
+    return render(request,'register.html',context)
 
+@login_required
 def user_profile(request):
     if request.method=="POST":
         name=request.POST.get('name')
@@ -133,6 +146,6 @@ def user_profile(request):
         mobile=request.POST.get('mobile')
         user=User_profile(name=name, email=email, rollno=rollno, designation=designation,department=department,bankname=bankname,ACtype=ACtype,AC=AC,IFSC=IFSC,aadhar=aadhar,mobile=mobile)
         user.save()
-    return render(request,'user_profile.html')
+    return render(request,'user_profile.html',context={'user':request.user})
 
 
