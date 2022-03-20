@@ -1,3 +1,4 @@
+import email
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout,login,authenticate
@@ -60,9 +61,14 @@ def home(request):
     return render(request,'home.html',context)    
 
 def status(request):
+    dt=Form.objects.filter(email=request.user.email)
+    dt2=Application.objects.filter(email=request.user.email)
     context={
-        'user':request.user
+        'user':request.user,
+        'claim' : dt,
+        'application' : dt2
     }
+    # print(request.user.email,dt[0].purpose)
     return render(request,'status.html',context)    
 
 def form(request):
