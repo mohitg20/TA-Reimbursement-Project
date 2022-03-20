@@ -35,7 +35,7 @@ which comprises of-:
 
 5. manage.py -: Inbulit python file containing basic implementation of framework.
 
-6. ## How to Run 
+## How to Run 
 Clone the repository-
 ```
 git clone https://github.com/mohitg20/TA-Reimbursement-Project.git
