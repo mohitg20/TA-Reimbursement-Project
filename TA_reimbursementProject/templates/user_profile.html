@@ -9,7 +9,7 @@
       {% csrf_token %}
       <div class="col-md-6">
         <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" value={{userdata.name}}>
+        <input type="text" class="form-control" id="name" name="name" value="{{userdata.name}}" readonly>
       </div>
         <div class="col-md-6">
           <label for="email" class="form-label">Email</label>
@@ -17,11 +17,11 @@
         </div>
         <div class="col-md-6">
           <label for="rollno" class="form-label">Roll No./PF No.</label>
-          <input type="text" class="form-control" id="rollno" name="rollno" value={{userdata.rollno}} >
+          <input type="text" class="form-control" id="rollno" name="rollno" value="{{userdata.rollno}}" readonly >
         </div> 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <label for="designation" class="form-label">Designation</label>
-            <input id="designation" class="form-control" name="designation" value={{userdata.designation}}>
+            <input id="designation" class="form-control" name="designation" value="{{userdata.designation}}"readonly>
               {% comment %} <option selected>Designation</option> {% endcomment %}
               {% comment %} <option value="1">Student</option>
               <option value="2">Faculty</option>
@@ -31,38 +31,38 @@
           </div>
           <div class="col-md-6">
             <label for="department" class="form-label">Department</label>
-            <input type="text" class="form-control" id="department" name="department" value={{userdata.department}}>
+            <input type="text" class="form-control" id="department" name="department" value="{{userdata.department}}"readonly>
           </div>
           <div class="col-md-6">
             <label for="bankname" class="form-label">Bank Name</label>
-            <input type="text" class="form-control" id="bankname" name="bankname" value={{userdata.bankname}}>
+            <input type="text" class="form-control" id="bankname" name="bankname" value="{{userdata.bankname}}"readonly>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <label for="ACtype" class="form-label">Type of Bank A/C</label>
-            <select id="ACtype" class="form-select" name="ACtype" value={{userdata.ACtype}}>
-              <option selected>Select the type of Bank Account</option>
+            <input id="ACtype" class="form-control" name="ACtype" value="{{userdata.ACtype}}"readonly>
+              {% comment %} <option selected>Select the type of Bank Account</option>
               <option value="1">Current Account</option>
               <option value="2">Savings Account</option>
               <option value="3">Salary Account</option>
-            </select>
+            </select> {% endcomment %}
           </div>
           <div class="col-md-6">
             <label for="AC" class="form-label">Bank A/C Number</label>
-            <input type="text" class="form-control" id="AC" name="AC" value={{userdata.AC}}>
+            <input type="text" class="form-control" id="AC" name="AC" value="{{userdata.AC}}"readonly>
           </div>
           <div class="col-md-6">
             <label for="IFSC" class="form-label">Bank IFSC Code</label>
-            <input type="text" class="form-control" id="IFSC" name="IFSC" value={{userdata.IFSC}}>
+            <input type="text" class="form-control" id="IFSC" name="IFSC" value="{{userdata.IFSC}}"readonly>
           </div>
           <div class="col-md-6">
             <label for="aadhar" class="form-label">Aadhar Number</label>
-            <input type="text" class="form-control" id="aadhar" name="aadhar" value={{userdata.aadhar}}>
+            <input type="text" class="form-control" id="aadhar" name="aadhar" value="{{userdata.aadhar}}"readonly>
           </div>
         <div class="col-md-6">
           <label for="mobile" class="form-label">Mobile Number</label>
-          <input type="text" class="form-control" id="mobile" name="mobile" value={{userdata.mobile}}>
+          <input type="text" class="form-control" id="mobile" name="mobile" value="{{userdata.mobile}}"readonly>
         </div>
-        <div class="col-12">
+        {% comment %} <div class="col-12">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="gridCheck">
             <label class="form-check-label" for="gridCheck">
@@ -72,7 +72,7 @@
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
+        </div> {% endcomment %}
       </form>
 {% endblock body %}
 

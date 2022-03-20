@@ -37,7 +37,10 @@ def loginUser(request):
         if user is not None:
             login(request,user)
             messages.success(request,"Login sucessfull!")
-            return render(request,"home.html",context={'user':user})
+            if user.groups.filter(name="TrialOffice"):
+                return render(request,"adminOffice.html",context={'user':user})
+            else: 
+                return render(request,"home.html",context={'user':user})
             # A backend authenticated the credentials
         else:
             messages.warning(request,"Incorrect Credentials")
