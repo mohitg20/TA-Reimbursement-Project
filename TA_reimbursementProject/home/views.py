@@ -234,12 +234,26 @@ def application(request):
         return render(request,'applicationBase.html',context={'username':request.user})
     return render(request,'application.html')
 
+@login_required
 def pending_requests(request):
-    list1 = []
-    for i in Application.objects.all():
-        plz=Application.objects.get(email=i)
-        list1.append(plz.__dict__)
-    return render(request,'pending.html',context={'AppData':list1})
+    d=Application.objects
+    if request.method=="POST":
+        if request.user.groups.filter(name="TrialOffice"):
+            req=request.POST.dict()
+            t=d.get(id=req["id"])
+            # print(request.POST)
+            if req["accept"]=='yes':
+                t.status=True
+                messages.success(request,"Application accepted!")
+                # print(Application.objects.get(id=req['id']).status)
+                t.save()
+            else:
+                t.delete()
+                messages.warning(request,"Application declined!")
+        else:
+            messages.warning(request,"You are not allowed for this request")
+            redirect("/home")
+    return render(request,'pending.html',context={'AppData':d.all().exclude(status=True)})
     
 
 

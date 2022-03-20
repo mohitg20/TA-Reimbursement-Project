@@ -121,21 +121,25 @@
               <input class="form-control" type="text" id="id" name="id" value="{{event.advance}}">
           </div>
         </td>
+        <form method="post" action="{%url 'pending'%}">
+          {% csrf_token %}
+          <input name="id" value={{event.id}} hidden></input>
         <td>
           <div class="form-group mb-3" >
               {% comment %} <input type="button" value="" /> {% endcomment %}
-              <button style="padding: 0px;border-width: 0px;">
+              <button type="submit" name="accept" value="yes" style="padding: 0px;border-width: 0px;">
               <span style="font-size: 30px;">&#9989;</span>
               </button>
           </div>
         </td>
         <td>
           <div class="form-group mb-3" >
-            <button style="padding: 0px;border-width: 0px;">
+            <button type="submit" name="accept"  value="no" style="padding: 0px;border-width: 0px;">
               <span style="font-size: 30px;">&#10060;</span>
             </button>
           </div>
         </td>
+      </form>
     </tr>
 
     {% endfor %}
