@@ -139,12 +139,13 @@ def form(request):
     if(Form.objects.filter(email=request.user.email).exists()):
         plz = Form.objects.get(email=request.user.email)
         return render(request,'filledform.html',context={'username':plz})
-    if User_profile.objects.filter(email=request.user.email).exists():
-        plz=User_profile.objects.get(email=request.user.email)
-        # print(plz.email)
-        return render(request,'form.html',context={'username':plz})
     else:
-        return render(request,'formBase.html',context={'userdata':request.user})
+        if User_profile.objects.filter(email=request.user.email).exists():
+            plz=User_profile.objects.get(email=request.user.email)
+            # print(plz.email)
+            return render(request,'form.html',context={'username':plz})
+        else:
+            return render(request,'formBase.html',context={'userdata':request.user})
         # return render(request,'status.html')
     # return render(request,'form.html')    
 
@@ -218,19 +219,33 @@ def application(request):
         application=Application(block_yr=block_yr,email=email,joining=joining,basic_pay=basic_pay,Name=Name,Designation=Designation,section=section,avail=avail,duration=duration,departure=departure,nature=nature,Purpose=Purpose,place=place,place1=place1,address=address,mode=mode,Name1=Name1,Age1=Age1,Name2=Name2,Age2=Age2,Name3=Name3,Age3=Age3,advance=advance)
         application.save()
         return render(request,'status.html')
-    if Application.objects.filter(email=request.user.email).exists():
-        plz=Application.objects.get(email=request.user.email)
-        # print(plz.email)
-        return render(request,'application.html',context={'userdata':plz})
-    else:
-        return render(request,'applicationBase.html',context={'userdata':request.user})
     return render(request,'application.html')
+
+# def pending_requests(request):
+
+#     plz=Application.objects.get(email="user@iitk.ac.in")
+#     print(plz.email)
+#     # return render(request,'pending.html',{'AppData':plz})
+    if User_profile.objects.filter(email=request.user.email).exists():
+        plz=User_profile.objects.get(email=request.user.email)
+        # print(plz.email)
+        return render(request,'application.html',context={'username':plz})
+    else:
+        return render(request,'applicationBase.html',context={'username':request.user})
+    return render(request,'application.html')
+
 def pending_requests(request):
     list1 = []
     for i in Application.objects.all():
         plz=Application.objects.get(email=i)
         list1.append(plz.__dict__)
     return render(request,'pending.html',context={'AppData':list1})
+<<<<<<< HEAD
+    
+
+
+=======
+>>>>>>> 72dd79f17c5fbf2f7de41929a97b40c6e6625d1d
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'password_reset.html'
     email_template_name = 'password_reset_email.html'
@@ -239,4 +254,4 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       "if an account exists with the email you entered. You should receive them shortly." \
                       " If you don't receive an email, " \
                       "please make sure you've entered the address you registered with, and check your spam folder."
-    success_url = reverse_lazy('login') #Check
+    success_url = reverse_lazy('login')
