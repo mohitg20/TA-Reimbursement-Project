@@ -1,3 +1,4 @@
+from xml.etree.ElementTree import tostring
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout,login,authenticate
@@ -129,7 +130,9 @@ def form(request):
         # email=request.POST.get('email')
         form=Form(drivelink=drivelink,institute=institute,email=email,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
         form.save()
-
+    if(Form.objects.filter(email=request.user.email).exists()):
+        plz = Form.objects.get(email=request.user.email)
+        return render(request,'filledform.html',context={'username':plz})
     if User_profile.objects.filter(email=request.user.email).exists():
         plz=User_profile.objects.get(email=request.user.email)
         # print(plz.email)
@@ -217,11 +220,21 @@ def application(request):
         return render(request,'applicationBase.html',context={'userdata':request.user})
     return render(request,'application.html')
 
+<<<<<<< HEAD
 # def pending_requests(request):
 
 #     plz=Application.objects.get(email="user@iitk.ac.in")
 #     print(plz.email)
 #     # return render(request,'pending.html',{'AppData':plz})
+=======
+def pending_requests(request):
+    list1 = []
+    for i in Application.objects.all():
+        plz=Application.objects.get(email=i)
+        list1.append(plz.__dict__)
+    return render(request,'pending.html',context={'AppData':list1})
+    
+>>>>>>> 8f63038fb80b1a3afc80fdcef990baa869ee3008
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
