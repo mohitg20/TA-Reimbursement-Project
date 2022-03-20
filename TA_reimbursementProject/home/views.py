@@ -1,4 +1,5 @@
 import email
+from xml.etree.ElementTree import tostring
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout,login,authenticate
@@ -59,6 +60,9 @@ def home(request):
         'user':request.user
     }
     return render(request,'home.html',context)    
+
+def pending(request):
+    return render(request,'pending.html')    
 
 def status(request):
     dt=Form.objects.filter(email=request.user.email)
@@ -132,8 +136,17 @@ def form(request):
         # email=request.POST.get('email')
         form=Form(drivelink=drivelink,institute=institute,email=email,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
         form.save()
-        return render(request,'status.html')
-    return render(request,'form.html')    
+    if(Form.objects.filter(email=request.user.email).exists()):
+        plz = Form.objects.get(email=request.user.email)
+        return render(request,'filledform.html',context={'username':plz})
+    if User_profile.objects.filter(email=request.user.email).exists():
+        plz=User_profile.objects.get(email=request.user.email)
+        # print(plz.email)
+        return render(request,'form.html',context={'username':plz})
+    else:
+        return render(request,'formBase.html',context={'userdata':request.user})
+        # return render(request,'status.html')
+    # return render(request,'form.html')    
 
 def registerUser(request):
     form = CreateUserForm()
@@ -165,6 +178,7 @@ def user_profile(request):
         IFSC=request.POST.get('IFSC')
         aadhar=request.POST.get('aadhar')
         mobile=request.POST.get('mobile')
+        # email=User_profile.cleaned_data('email')
         user=User_profile(name=name, email=email, rollno=rollno, designation=designation,department=department,bankname=bankname,ACtype=ACtype,AC=AC,IFSC=IFSC,aadhar=aadhar,mobile=mobile)
         user.save()
     # return render(request,'user_profile.html',context={'user':request.user})
@@ -175,7 +189,7 @@ def user_profile(request):
     else:
         return render(request,'user_profileBase.html',context={'userdata':request.user})
 
-
+ 
 def application(request):
     if request.method =="POST":
         block_yr=request.POST.get('block_yr')
@@ -204,9 +218,19 @@ def application(request):
         application=Application(block_yr=block_yr,email=email,joining=joining,basic_pay=basic_pay,Name=Name,Designation=Designation,section=section,avail=avail,duration=duration,departure=departure,nature=nature,Purpose=Purpose,place=place,place1=place1,address=address,mode=mode,Name1=Name1,Age1=Age1,Name2=Name2,Age2=Age2,Name3=Name3,Age3=Age3,advance=advance)
         application.save()
         return render(request,'status.html')
+    if Application.objects.filter(email=request.user.email).exists():
+        plz=Application.objects.get(email=request.user.email)
+        # print(plz.email)
+        return render(request,'application.html',context={'userdata':plz})
+    else:
+        return render(request,'applicationBase.html',context={'userdata':request.user})
     return render(request,'application.html')
-
-
+def pending_requests(request):
+    list1 = []
+    for i in Application.objects.all():
+        plz=Application.objects.get(email=i)
+        list1.append(plz.__dict__)
+    return render(request,'pending.html',context={'AppData':list1})
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'password_reset.html'
     email_template_name = 'password_reset_email.html'

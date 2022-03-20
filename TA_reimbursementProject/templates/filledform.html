@@ -12,7 +12,7 @@
         <td>
             <div class="form-group mb-3" > 
                 <label class="form-label" for="institute">Institute A/C <b>/</b> CPDA</label>
-                <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute A/C or CPDA">
+                <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute A/C or CPDA" value={{username.institute}} readonly>
             </div>
         </td>
         <td>
@@ -24,7 +24,7 @@
         <td>
             <div class="form-group mb-3" >
                 <label class="form-label" for="project_number">Project Number</label>
-                <input class="form-control" type="number" id="project_number" name="project_number" placeholder="Enter project_number">
+                <input class="form-control" type="number" id="project_number" name="project_number" placeholder="Enter project_number" value={{username.project_number}} readonly>
             </div>
         </td>
     </tr>
@@ -59,13 +59,13 @@
         <td>
             <div class="form-group mb-3" >
                 <label class="form-label" for="pay_band">Pay Band</label>
-                <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="Enter your pay band">
+                <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="Enter your pay band" readonly value={{usernmane.pay_band}}>
             </div>
         </td>
         <td>
             <div class="form-group mb-3" >
                 <label class="form-label" for="purpose">Purpose</label>
-                <input class="form-control" type="text" id="purpose" name="purpose" placeholder="Enterurpose of journey">
+                <input readonly value = {{username.purpose}}class="form-control" type="text" id="purpose" name="purpose" placeholder="Enterurpose of journey">
             </div>
         </td>
     </tr>
