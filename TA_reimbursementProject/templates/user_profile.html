@@ -2,7 +2,9 @@
 {% block title %} My Profile {% endblock title %}
 {% block body %} 
 <br>  <br>
-    <h1 class="text-center"> MY PROFILE </h1>
+    <h1 class="text-center" style="
+    margin-bottom: 0px;
+    "> MY PROFILE </h1>
     <br>  <br>  <br>
     <div class="container">
     <form class="row g-3" method="post" action="/user_profile">
@@ -19,7 +21,7 @@
           <label for="rollno" class="form-label">Roll No./PF No.</label>
           <input type="text" class="form-control" id="rollno" name="rollno" value="{{userdata.rollno}}" readonly >
         </div> 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <label for="designation" class="form-label">Designation</label>
             <input id="designation" class="form-control" name="designation" value="{{userdata.designation}}"readonly>
               {% comment %} <option selected>Designation</option> {% endcomment %}
@@ -37,7 +39,7 @@
             <label for="bankname" class="form-label">Bank Name</label>
             <input type="text" class="form-control" id="bankname" name="bankname" value="{{userdata.bankname}}"readonly>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
             <label for="ACtype" class="form-label">Type of Bank A/C</label>
             <input id="ACtype" class="form-control" name="ACtype" value="{{userdata.ACtype}}"readonly>
               {% comment %} <option selected>Select the type of Bank Account</option>
