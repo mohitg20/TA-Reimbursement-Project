@@ -6,6 +6,10 @@ from unicodedata import category
 from home.models import User_profile
 from django.contrib import messages
 
+from .forms import CreateUserForm
+# from .filters import OrderFilter
+
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -105,6 +109,21 @@ def form(request):
     return render(request,'form.html')    
 
 def registerUser(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Your account has been created successfully!")
+            return render(request,"login.html")
+        else :
+            for value in form.errors.values():
+                messages.error(request,value)
+            
+    context = {'form':form}
+    return render(request,'register1.html',context)
     if request.method=="POST":
         username=request.POST.get('username')
         email=request.POST.get('email')
@@ -116,7 +135,7 @@ def registerUser(request):
         messages.success(request,"Your account has been created successfully")
         
         return redirect('/login')
-    return render(request,'register.html')
+    
 
 def user_profile(request):
     if request.method=="POST":
