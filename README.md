@@ -12,13 +12,14 @@ which comprises of-:
     (iii) urls.py -: maintains various urls of different pages.
     (iv) views.py -: used to store different attributes/information for storing in database.
     (v) apps.py -: contains file created so as to include configuration for the app.
+    (vi) forms.py -: used for user authentication
 
 2. TA_reimbursementProject -: which is our Django project containing-:
     (i) settings.py which maintains various settings and also used for registering apps in Django project.
     (ii) urls.py which contains url to various app of our project.
-    and so on.. containing standard applications of Django.
+    (iii) asgi.py and wsgi.py -: contains standard python source files
 
-3. templates -: which is our HTML source files named as-:
+3. templates -: which is our HTML source files. The major files used are-:
     (i) application -: which contains Application Form
     (ii) base -: which contains common header and footer (basic layout)
     (iii) baseportal -: this contains basic formulation for standard prompt and messages which appear confirming successful, login etc.
