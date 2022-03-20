@@ -159,6 +159,7 @@ def user_profile(request):
         IFSC=request.POST.get('IFSC')
         aadhar=request.POST.get('aadhar')
         mobile=request.POST.get('mobile')
+        # email=User_profile.cleaned_data('email')
         user=User_profile(name=name, email=email, rollno=rollno, designation=designation,department=department,bankname=bankname,ACtype=ACtype,AC=AC,IFSC=IFSC,aadhar=aadhar,mobile=mobile)
         user.save()
     # return render(request,'user_profile.html',context={'user':request.user})
@@ -198,7 +199,13 @@ def application(request):
         application=Application(block_yr=block_yr,email=email,joining=joining,basic_pay=basic_pay,Name=Name,Designation=Designation,section=section,avail=avail,duration=duration,departure=departure,nature=nature,Purpose=Purpose,place=place,place1=place1,address=address,mode=mode,Name1=Name1,Age1=Age1,Name2=Name2,Age2=Age2,Name3=Name3,Age3=Age3,advance=advance)
         application.save()
         return render(request,'status.html')
-    return render(request,'application.html')
+    if User_profile.objects.filter(email=request.user.email).exists():
+        plz=User_profile.objects.get(email=request.user.email)
+        # print(plz.email)
+        return render(request,'user_profile.html',context={'userdata':plz})
+    else:
+        return render(request,'user_profileBase.html',context={'userdata':request.user})
+    # return render(request,'application.html')
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
