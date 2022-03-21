@@ -2,16 +2,18 @@
 {% block title %} Home {% endblock title %}
 {% block body %} 
 <h1>Welcome {{user.email}} ! You can view the status of your application here.</h1> 
+<form method="GET">
 <ul class="list-group">
   {% if claim %}
     {% for form in claim %}
-    <li class="list-group-item list-group-item-{{form.status|yesno:"success,danger,info"}}">Claim-Bill | Application : {{form.purpose}} Status : {{form.status|yesno:"Congratulations! Your application is verified,Verfication still under process,INVALID status"}}</li>
+    <button name="pk" value="{{form.pk}}" formaction="{%url 'form'%}"><li class="list-group-item list-group-item-{{form.status|yesno:"success,danger,info"}}">Claim-Bill | Bill-id : {{form.id}} | Status : {{form.status|yesno:"Congratulations! Your application is verified,Application Rejected,Verfication still under process"}}</li></button>
     {% endfor %}
     {% endif %}
 {% if application%}
     {% for form in application %}
-    <li class="list-group-item list-group-item-{{form.status|yesno:"success,danger,info"}}">Application-Form | Application : {{form.purpose}} Status : {{form.status|yesno:"Congratulations! Your application is verified,Verfication still under process,INVALID status"}}</li>
+    <button name="pk" value="{{form.pk}}" formaction="{%url 'application_form'%}" ><li class="list-group-item list-group-item-{{form.status|yesno:"success,danger,info"}}">Application-Form | Application-id : {{form.pk}} | Status : {{form.status|yesno:"Congratulations! Your application is verified,Application Rejected,Verfication still under process"}}</li></button>
     {% endfor %}
     {% endif %}
 </ul>
+</form>
 {% endblock body %}

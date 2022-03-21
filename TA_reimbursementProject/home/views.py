@@ -3,7 +3,7 @@ from xml.etree.ElementTree import tostring
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout,login,authenticate
-from home.models import Form,Application
+from home.models import *
 from unicodedata import category
 from home.models import User_profile
 from django.contrib import messages
@@ -14,7 +14,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .forms import CreateUserForm
+from .forms import *
 # from .filters import OrderFilter
 
 from django.contrib.auth.forms import UserCreationForm
@@ -67,6 +67,14 @@ def home(request):
 def status(request):
     dt=Form.objects.filter(email=request.user.email)
     dt2=Application.objects.filter(email=request.user.email)
+    for d in [dt,dt2]:
+        for fr in d:
+            if fr.status==1:
+                fr.status=True
+            elif fr.status==0:
+                fr.status=False
+            else:
+                fr.status=None
     context={
         'user':request.user,
         'claim' : dt,
@@ -78,7 +86,7 @@ def status(request):
 def form(request):
     if request.method =="POST":
         institute=request.POST.get('institute')
-        email=request.POST.get('email')
+        email=request.user.email
         project_number=request.POST.get('project_number')
         name=request.POST.get('name')
         roll_number=request.POST.get('roll_number')
@@ -190,49 +198,44 @@ def user_profile(request):
     else:
         return render(request,'user_profileBase.html',context={'userdata':request.user})
 
- 
+@login_required
 def application(request):
-    if request.method =="POST":
-        block_yr=request.POST.get('block_yr')
-        email=request.POST.get('email')
-        joining=request.POST.get('joining')
-        basic_pay=request.POST.get('basic_pay')
-        Name=request.POST.get('Name')
-        Designation=request.POST.get('Designation')
-        section=request.POST.get('section')
-        avail=request.POST.get('avail')
-        duration=request.POST.get('duration')
-        departure=request.POST.get('departure')
-        nature=request.POST.get('nature')
-        Purpose=request.POST.get('Purpose')
-        place=request.POST.get('place')
-        place1=request.POST.get('place1')
-        address=request.POST.get('address')
-        mode=request.POST.get('mode')
-        Name1=request.POST.get('Name1')
-        Age1=request.POST.get('Age1')
-        Name2=request.POST.get('Name2')
-        Age2=request.POST.get('Age2')
-        Name3=request.POST.get('Name3')
-        Age3=request.POST.get('Age3')
-        advance=request.POST.get('advance')
-        application=Application(block_yr=block_yr,email=email,joining=joining,basic_pay=basic_pay,Name=Name,Designation=Designation,section=section,avail=avail,duration=duration,departure=departure,nature=nature,Purpose=Purpose,place=place,place1=place1,address=address,mode=mode,Name1=Name1,Age1=Age1,Name2=Name2,Age2=Age2,Name3=Name3,Age3=Age3,advance=advance)
-        application.save()
-        return render(request,'status.html')
-    # return render(request,'application.html')
-
+    fr=ApplicationForm()
+    filled={}
+    filled['email']=request.user.email
+    s=True
+    if request.method=="POST":
+        # print(str(request))
+        fr=ApplicationForm(request.POST)
+        if fr.is_valid():
+            t=fr.save()
+            t.email=request.user.email
+            t.save()
+            messages.success(request,"Request has been submitted successfully!")
+            messages.info(request,"Please note your application id for future reference  :  "+str(t.pk))
+        else:
+            print(fr.errors)
+            for value in fr.errors.values():
+                messages.info(request,value)
+    elif request.method=="GET":
+        if request.GET.__contains__("pk"):
+            s=False
+            filled=Application.objects.filter(email=request.user.email,pk=request.GET.__getitem__("pk"))[0].__dict__
+            print(filled)
+    context={'fill_form':filled,'submit':s}
+    return render(request,'application.html',context)
 # def pending_requests(request):
 
 #     plz=Application.objects.get(email="user@iitk.ac.in")
 #     print(plz.email)
 #     # return render(request,'pending.html',{'AppData':plz})
-    if User_profile.objects.filter(email=request.user.email).exists():
-        plz=User_profile.objects.get(email=request.user.email)
-        # print(plz.email)
-        return render(request,'application.html',context={'username':plz})
-    else:
-        return render(request,'applicationBase.html',context={'username':request.user})
-    return render(request,'application.html')
+#     if User_profile.objects.filter(email=request.user.email).exists():
+#         plz=User_profile.objects.get(email=request.user.email)
+#         # print(plz.email)
+#         return render(request,'application.html',context={'username':plz})
+#     else:
+#         return render(request,'applicationBase.html',context={'username':request.user})
+#     return render(request,'application.html')
 
 @login_required
 def pending_requests(request):
@@ -243,17 +246,17 @@ def pending_requests(request):
             t=d.get(id=req["id"])
             # print(request.POST)
             if req["accept"]=='yes':
-                t.status=True
+                t.status=Application.ACCEPTED
                 messages.success(request,"Application accepted!")
                 # print(Application.objects.get(id=req['id']).status)
                 t.save()
             else:
-                t.delete()
+                t.status=Application.REJECTED
                 messages.warning(request,"Application declined!")
         else:
             messages.warning(request,"You are not allowed for this request")
             redirect("/home")
-    return render(request,'pending.html',context={'AppData':d.all().exclude(status=True)})
+    return render(request,'pending.html',context={'AppData':d.filter(status=Application.ACCEPTED)})
     
 
 
