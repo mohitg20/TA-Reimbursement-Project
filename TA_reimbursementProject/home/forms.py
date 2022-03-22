@@ -22,10 +22,17 @@ class CreateUserForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise ValidationError("Email exists")
         return self.cleaned_data
-# class ProfileForm(UserCreationForm):
-#     class Meta:
-#         model=home.models.User_profiles
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model=User_profile
+        exclude=['email','user']
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        exclude=['status','email']
+        exclude=['status','email','profile']
+
+class claimBillForm(forms.ModelForm):
+    
+    class Meta:
+        model = claimBill
+        exclude=['apl','status']

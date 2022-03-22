@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout,login,authenticate
 from home.models import *
 from unicodedata import category
-from home.models import User_profile
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -65,7 +64,7 @@ def home(request):
 #     return render(request,'pending.html')    
 
 def status(request):
-    dt=Form.objects.filter(email=request.user.email)
+    dt=claimBill.objects.filter(email=request.user.email)
     dt2=Application.objects.filter(email=request.user.email)
     for d in [dt,dt2]:
         for fr in d:
@@ -83,6 +82,7 @@ def status(request):
     # print(request.user.email,dt[0].purpose)
     return render(request,'status.html',context)    
 
+@login_required
 def form(request):
     if request.method =="POST":
         institute=request.POST.get('institute')
@@ -142,10 +142,10 @@ def form(request):
         
         
         # email=request.POST.get('email')
-        form=Form(drivelink=drivelink,institute=institute,email=email,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
+        form=claimBill(drivelink=drivelink,institute=institute,email=email,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
         form.save()
-    if(Form.objects.filter(email=request.user.email).exists()):
-        plz = Form.objects.get(email=request.user.email)
+    if(claimBill.objects.filter(email=request.user.email).exists()):
+        plz = claimBill.objects.get(email=request.user.email)
         return render(request,'filledform.html',context={'username':plz})
     else:
         if User_profile.objects.filter(email=request.user.email).exists():
@@ -175,41 +175,56 @@ def registerUser(request):
 
 @login_required
 def user_profile(request):
+    fr=ProfileForm()
+    filled={}
+    filled['email']=request.user.email
+    s=True
     if request.method=="POST":
-        name=request.POST.get('name')
-        email=request.POST.get('email')
-        rollno=request.POST.get('rollno')
-        designation=request.POST.get('designation')
-        department=request.POST.get('department')
-        bankname=request.POST.get('bankname')
-        ACtype=request.POST.get('ACtype')
-        AC=request.POST.get('AC')
-        IFSC=request.POST.get('IFSC')
-        aadhar=request.POST.get('aadhar')
-        mobile=request.POST.get('mobile')
-        # email=User_profile.cleaned_data('email')
-        user=User_profile(name=name, email=email, rollno=rollno, designation=designation,department=department,bankname=bankname,ACtype=ACtype,AC=AC,IFSC=IFSC,aadhar=aadhar,mobile=mobile)
-        user.save()
-    # return render(request,'user_profile.html',context={'user':request.user})
-    if User_profile.objects.filter(email=request.user.email).exists():
-        plz=User_profile.objects.get(email=request.user.email)
-        # print(plz.email)
-        return render(request,'user_profile.html',context={'userdata':plz})
-    else:
-        return render(request,'user_profileBase.html',context={'userdata':request.user})
+        if request.user.profile.email:
+            messages.info(request,"Profile already exists!")
+            filled=request.user.profile.__dict__
+            s=False
+        else:
+            fr=ProfileForm(request.POST,instance=request.user.profile)
+            if fr.is_valid():
+                t=fr.save(commit=False)
+                t.email=request.user.email
+                t.user=request.user
+                t.save()
+                messages.success(request,"Profile created successfully!")
+                return redirect('/user_profile')
+            else:
+                print(fr.errors)
+                for value in fr.errors.values():
+                    messages.info(request,value)
+    elif request.method=="GET":
+        if request.user.profile.email:
+            filled=request.user.profile.__dict__
+            # print(filled)
+            s=False
+    context={'fill_form':filled,'submit':s}
+    return render(request,'profile.html',context)
 
 @login_required
 def application(request):
     fr=ApplicationForm()
     filled={}
     filled['email']=request.user.email
+    filled['profile']=request.user.profile
+    filled['rollno']=request.user.profile.rollno
+    filled['Name']=request.user.profile.name
+    filled['section']=request.user.profile.department
     s=True
     if request.method=="POST":
         # print(str(request))
         fr=ApplicationForm(request.POST)
         if fr.is_valid():
-            t=fr.save()
+            t=fr.save(commit=False)
             t.email=request.user.email
+            t.profile=request.user.profile
+            t.rollno=request.user.profile.rollno
+            t.Name=request.user.profile.name
+            t.section=request.user.profile.department
             t.save()
             messages.success(request,"Request has been submitted successfully!")
             messages.info(request,"Please note your application id for future reference  :  "+str(t.pk))
@@ -221,7 +236,10 @@ def application(request):
         if request.GET.__contains__("pk"):
             s=False
             filled=Application.objects.filter(email=request.user.email,pk=request.GET.__getitem__("pk"))[0].__dict__
-            print(filled)
+            # print(filled)
+        elif not request.user.profile.email:
+            messages.error(request,"Update your Profile first")
+            return redirect('/user_profile')
     context={'fill_form':filled,'submit':s}
     return render(request,'application.html',context)
 # def pending_requests(request):

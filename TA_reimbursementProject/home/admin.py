@@ -5,7 +5,7 @@ from home.models import *
 # Register your models here.
 
 admin.site.register(User_profile)
-admin.site.register(Form)
+admin.site.register(claimBill)
 admin.site.register(Application)
 # admin.site.register(Task)
 
