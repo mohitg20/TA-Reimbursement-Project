@@ -35,4 +35,4 @@ class claimBillForm(forms.ModelForm):
     
     class Meta:
         model = claimBill
-        exclude=['apl','status']
+        exclude=['apl','status','name','email','roll_number','designation','department','purpose']
