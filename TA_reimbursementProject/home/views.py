@@ -107,7 +107,7 @@ def form(request):
         if fr.is_valid():
             t=fr.save(commit=False)
             t.email=request.user.email
-            t.apl=d.get(pk=request.POST.__getitem__("application_pk"))
+            t.apl=d.get(email=request.user.email,pk=request.POST.__getitem__("application_pk"))
             t.roll_number=request.user.profile.rollno
             t.name=request.user.profile.name
             t.designation=request.user.profile.designation
@@ -122,9 +122,9 @@ def form(request):
                 messages.info(request,value)
     elif request.method=="GET":
         if request.GET.__contains__("application_pk"):
-            if d.filter(pk=request.GET.__getitem__("application_pk")).count()==0:
+            if d.filter(email=request.user.email,pk=request.GET.__getitem__("application_pk")).count()==0:
                 messages.warning(request,"Application not found")
-            elif d.get(pk=request.GET.__getitem__("application_pk")).status!=Application.ACCEPTED:
+            elif d.get(email=request.user.email,pk=request.GET.__getitem__("application_pk")).status!=Application.ACCEPTED:
                 messages.warning(request,"Application is not yet accepted")
             else:
                 filled['application_pk2']=request.GET.__getitem__("application_pk")
@@ -132,11 +132,11 @@ def form(request):
                 level=2
         elif request.GET.__contains__("pk"):
             c=claimBill.objects
-            if c.filter(pk=request.GET.__getitem__("pk")).count()==0:
+            if c.filter(email=request.user.email,pk=request.GET.__getitem__("pk")).count()==0:
                 messages.warning(request,"Bill not found")
             else:
                 level=2
-                filled=c.get(pk=request.GET.__getitem__("pk")).__dict__
+                filled=c.get(email=request.user.email,pk=request.GET.__getitem__("pk")).__dict__
                 s=False
     context={'fill_form':filled,'submit':s,'level':level}
     return render(request,'form.html',context)
