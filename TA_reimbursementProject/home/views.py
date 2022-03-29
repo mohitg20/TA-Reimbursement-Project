@@ -241,20 +241,11 @@ def pending_requests(request):
         if request.method=="POST":
             if request.user.groups.filter(name="Office"):
                 req=request.POST.dict()
-                t=d.get(pk=req["id"])  
+                t=d.get(pk=req["pk"])  
                 if req["accept"]=='yes':
                     t.status=Application.ACCEPTED
                     messages.success(request,"Application accepted!")
-                    # print(Application.objects.get(id=req['id']).status)
                     t.save()
-                # elif req["accept"]=='viewapplication':
-                #     # print(request.method)
-                #     # request.method="hmmm"
-                #     # print(request.method)
-                #     # # return redirect("/application_form?pk="+req["id"])
-                #     # if request.method=="POST2":
-                #     #     return redirect("/pending")
-                #     return render(request,"application.html",context={'pk':req["id"]})
                 elif req["accept"]=='no':
                     t.status=Application.REJECTED
                     t.save()
