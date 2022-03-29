@@ -2,10 +2,10 @@
 
 {% block body %}
 <div class="container">
-<h4>Indian Institute of Technology, Kanpur</h4>
-<h4>
-    Application for Grant of LTC
-</h4>
+{% comment %} <h4>Indian Institute of Technology, Kanpur</h4> {% endcomment %}
+<h3 style="text-align: center; padding:20px 0;">
+    <b>Application for Grant of LTC </b>
+</h3>
 <div class="container bg-light">
 <form method="POST" action="/application_form" class="row g-3" >
     {% csrf_token %}
