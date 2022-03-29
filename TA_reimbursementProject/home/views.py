@@ -65,9 +65,7 @@ def home(request):
         'user':request.user
     }
     return render(request,'home.html',context)    
-
-# def pending(request):
-#     return render(request,'pending.html')    
+    
 @login_required
 def status(request):
     dt=claimBill.objects.filter(email=request.user.email)
@@ -225,18 +223,7 @@ def application(request):
             # print(filled)
     context={'fill_form':filled,'submit':s}
     return render(request,'application.html',context)
-# def pending_requests(request):
 
-#     plz=Application.objects.get(email="user@iitk.ac.in")
-#     print(plz.email)
-#     # return render(request,'pending.html',{'AppData':plz})
-#     if User_profile.objects.filter(email=request.user.email).exists():
-#         plz=User_profile.objects.get(email=request.user.email)
-#         # print(plz.email)
-#         return render(request,'application.html',context={'username':plz})
-#     else:
-#         return render(request,'applicationBase.html',context={'username':request.user})
-#     return render(request,'application.html')
 def redirecting(request):
     return redirect("/pending")
 
