@@ -1,14 +1,13 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %} {% endcomment %}
 
 {% block body %}
 <div class="container">
-{% comment %} <h4>Indian Institute of Technology, Kanpur</h4> {% endcomment %}
-<h3 style="text-align: center; padding:20px 0;">
-    <b>Application for Grant of LTC </b>
-</h3>
+<h4>Indian Institute of Technology, Kanpur</h4>
+<h4>
+    Application for Grant of LTC
+</h4>
 <div class="container bg-light">
-<form method="POST" action="/application_form" class="row g-3" >
-    {% csrf_token %}
+
 
 <table class="table">
     <tr>
@@ -17,7 +16,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="number" id="block_yr" name="block_yr">
+                <input class="form-control" type="number" id="block_yr" name="block_yr" value={{app.block_yr}}>
             </div>
         </td>
         <td>
@@ -25,7 +24,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="email" id="email" name="email">
+                <input class="form-control" type="email" id="email" name="email" value={{app.email}}>
             </div>
         </td>
         <td>
@@ -33,7 +32,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="number" id="rollno" name="rollno" >
+                <input class="form-control" type="number" id="rollno" name="rollno" value={{app.rollno}}>
             </div>
         </td>
     </tr>
@@ -41,7 +40,7 @@
 <br>
 <div class="col-mb-3">
     <label for="Basic Pay Rs.">Basic Pay Rs.</label>
-    <input class="form-control" type="number" id="basic_pay" name="basic_pay">
+    <input class="form-control" type="number" id="basic_pay" name="basic_pay" value={{app.basic_pay}}>
 </div>
 <br>
 <table>
@@ -54,7 +53,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="Name" name="Name">
+                <input class="form-control" type="text" id="Name" name="Name" value={{app.Name}}>
             </div>
         </td>
     </tr>
@@ -67,7 +66,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="Designation" name="Designation">
+                <input class="form-control" type="text" id="Designation" name="Designation" value={{app.Designation}}>
             </div>
         </td>
     </tr>
@@ -80,7 +79,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="section" name="section" >
+                <input class="form-control" type="text" id="section" name="section" value={{app.section}}>
             </div>
         </td>
     </tr>
@@ -93,7 +92,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="avail" name="avail" placeholder="Yes/No">
+                <input class="form-control" type="text" id="avail" name="avail" placeholder="Yes/No" value={{app.avail}}>
             </div>
         </td>
     </tr>
@@ -106,7 +105,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration">
+                <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration" value={{app.duration}}>
             </div>
         </td>
     </tr>
@@ -119,7 +118,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="departure" name="departure" placeholder="dd/mm/yyyy">
+                <input class="form-control" type="text" id="departure" name="departure" placeholder="dd/mm/yyyy" value={{app.departure}}>
             </div>
         </td>
     </tr>
@@ -132,7 +131,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="nature" name="nature" placeholder="Nature">
+                <input class="form-control" type="text" id="nature" name="nature" placeholder="Nature" value={{app.nature}}>
             </div>
         </td>
     </tr>
@@ -145,7 +144,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="Purpose" name="Purpose" placeholder="Purpose">
+                <input class="form-control" type="text" id="Purpose" name="Purpose" placeholder="Purpose" value={{app.Purpose}}>
             </div>
         </td>
     </tr>
@@ -158,7 +157,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="place" name="place" placeholder="Home town/Elsewhere">
+                <input class="form-control" type="text" id="place" name="place" placeholder="Home town/Elsewhere" value={{app.place}}>
             </div>
         </td>
     </tr>
@@ -171,7 +170,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="place1" name="place1" placeholder="Place of visit">
+                <input class="form-control" type="text" id="place1" name="place1" placeholder="Place of visit" value={{app.place1}}>
             </div>
         </td>
     </tr>
@@ -184,7 +183,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="address" name="address" placeholder="Address">
+                <input class="form-control" type="text" id="address" name="address" placeholder="Address" value={{app.address}}>
             </div>
         </td>
     </tr>
@@ -197,7 +196,7 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air">
+                <input class="form-control" type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air" value={{app.mode}}>
             </div>
         </td>
     </tr>
@@ -233,12 +232,12 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="name" id="Name1" name="Name1" placeholder="Put NA if none">
+                <input class="form-control" type="name" id="Name1" name="Name1" placeholder="Put NA if none" value={{app.Name1}}>
             </div>
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="number" id="Age1" name="Age1" placeholder="Put NA if none" >
+                <input class="form-control" type="number" id="Age1" name="Age1" placeholder="Put NA if none" value={{app.Age1}}>
             </div>
         </td>
     </tr>
@@ -251,12 +250,12 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="name" id="Name2" name="Name2" placeholder="Put NA if none">
+                <input class="form-control" type="name" id="Name2" name="Name2" placeholder="Put NA if none" value={{app.Name2}}>
             </div>
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="number" id="Age2" name="Age2" placeholder="Put NA if none">
+                <input class="form-control" type="number" id="Age2" name="Age2" placeholder="Put NA if none" value={{app.Age2}}>
             </div>
         </td>
     </tr>
@@ -269,12 +268,12 @@
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="name" id="Name3" name="Name3" placeholder="Put NA if none">
+                <input class="form-control" type="name" id="Name3" name="Name3" placeholder="Put NA if none" value={{app.Name3}}>
             </div>
         </td>
         <td>
             <div class="col-mb-3">
-                <input class="form-control" type="number" id="Age3" name="Age3" placeholder="Put NA if none">
+                <input class="form-control" type="number" id="Age3" name="Age3" placeholder="Put NA if none" value={{app.Age3}}>
             </div>
         </td>
     </tr>
@@ -289,32 +288,23 @@
 <span>
     Rs.
     <div class="col-mb-3">
-        <input class="form-control" type="number" id="advance" name="advance" >
+        <input class="form-control" type="number" id="advance" name="advance" value={{app.advance}}>
     </div>
 </span>
 
 
 <br>
-{% if submit %}
+
 <div>
-<button class="btn btn-primary" type="submit">Submit</button>
+<form method="POST2" action="/pending">
+    {% csrf_token %}
+<button class="btn btn-primary" type="submit">Back</button>
 </div>
-{% endif %}
+
 </form>
 </div>
 </div>
 {% endblock body %}
 
-{% block script %}
-{% if fill_form %}
-    {%for key,value in fill_form.items%}
-    var x=document.getElementById("{{key}}")
-    if(x){
-        x.value = "{{value}}";
-        
-        x.readOnly=true;
-    }
-    {%endfor%}
-{% endif %}
-{% endblock script %}
+
 

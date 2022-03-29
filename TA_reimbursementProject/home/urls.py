@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from home import views
+import re
 
 urlpatterns = [
     path('',views.index, name="home" ),
@@ -12,7 +13,8 @@ urlpatterns = [
     path('home',views.home, name="home" ),
     path('application_status',views.status, name="application_status" ),
     path('application_form',views.application, name="application_form" ),
-    path('pending',views.pending_requests, name="pending" ),
+    path('pending',views.pending_requests, name="pending"),
+    path('redirecting',views.redirecting,name="redirecting")
     # add forget password
 
 ]

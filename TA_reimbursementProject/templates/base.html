@@ -7,7 +7,7 @@
   <style>
     .hello-msg{
   font-size: 18px;
-  color: #fff;
+  color: rgb(255, 255, 255);
   margin-right: 20px;
   
     }
@@ -18,7 +18,7 @@
   <title>{% block title %}{% endblock title %} | TA-Reimbursement </title>
 {% endblock head %}
 {% block nav %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #c0392b;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +26,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" style="padding:0 10px;">
-          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        <li class="nav-item" >
+          <a class="nav-link active" aria-current="page" href="/home"><img src="https://i.ibb.co/wgcQxVp/iitklogo.png" style="
+            position: absolute;
+            left: 30px;
+            top: 7.5px;
+            " width="40" height="40"></a>
+        </li>
+        <li class="nav-item" style="padding:0 10px 0 0;">
+          <a class="nav-link active" aria-current="page" href="/home" style="margin-left: 30px;">Home</a>
         </li>
         <li class="nav-item" style="padding:0 10px;">
           <a class="nav-link" href="/user_profile">My Profile</a>
@@ -51,13 +58,14 @@
         </li>
       </ul>
       <span class="hello-msg"><p style="margin-top: auto; margin-bottom: auto;">Hello, {{request.user}} </p></span>
-      <span ><a class="nav-link" href="{% url 'logout' %}"><b>Logout</b></a></span>
+      <span ><a class="nav-link" href="{% url 'logout' %}" style="color:antiquewhite;"><b>Logout</b></a></span>
     </div>
   </div>
 </nav>
 
 {% endblock nav %}
 <body>
-{% block body %}{% endblock body %}
+{% block body %}
+{% endblock body %}
 {% block script %}{% endblock script %}
 </body>

@@ -1,5 +1,49 @@
 {% extends 'base.html' %}
 {% block title %} Home {% endblock title %}
 {% block body %} 
-<h1>Welcome {{user.email}} ! You are now logged in.</h1> 
+
+<div class="container" style="padding: 30px 0;">
+    <div class="card">
+        <div class="card-header">
+          <h1>Welcome {{user.username}} !</h1>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Hello! This is the Travel Allowance Reimbursement portal of IIT Kanpur. If you are new to this page, kindly update your user profile using this button.</h5>
+          <br>
+          <a href="/user_profile" style="background-color: #c0392b;" class="btn btn-lg btn-primary">My Profile</a>
+        </div>
+      </div>
+</div>
+
+<div class="container" style="padding: 30px 0;">
+    <div class="card">
+        <div class="card-header">
+          <h1>Features</h1>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><b>Application and Advance Request</b></h5>
+          <p class="card-text"><h6>Apply for the journey approval along with relevant proofs and journey details. You can also request advance payment if required by clicking on the button below.</h6></p>
+          <br>
+          <a href="/application_form" style="background-color: #c0392b;" class="btn btn-lg btn-primary">Application Form</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><b>Claim Request</b></h5>
+            <p class="card-text"><h6>Apply for the claim once the journey is completed. Upload the relevants bills and proofs along with the form. Once your claim is verified, payment will be done automatically to your bank account.</h6></p>
+            <br>
+            <a href="/form" style="background-color: #c0392b;" class="btn btn-lg btn-primary">Claim Form</a>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><b>Application Status</b></h5>
+            <p class="card-text"><h6>You can check current status of your application in this section with the respective application id.</h6></p>
+            <br>
+            <a href="/application_status" style="background-color: #c0392b;" class="btn btn-lg btn-primary">Application Status</a>
+        </div>
+      </div>
+</div>
+
+
+
+<div class="container" style="padding-top: 30px;">
+    <h6 style="text-align:center"> This website is created by Team Innovators to ease the process of Travel Allowance Reimbursement by taking it to the digital level and allowing the user to claim the bill online.</h6>
+</div>
 {% endblock body %}
