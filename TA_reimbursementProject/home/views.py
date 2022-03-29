@@ -87,80 +87,109 @@ def status(request):
     # print(request.user.email,dt[0].purpose)
     return render(request,'status.html',context)    
 
-@login_required
-def form(request):
-    if request.method =="POST":
-        institute=request.POST.get('institute')
-        email=request.user.email
-        project_number=request.POST.get('project_number')
-        name=request.POST.get('name')
-        roll_number=request.POST.get('roll_number')
-        designation=request.POST.get('designation')
-        department=request.POST.get('department')
-        pay_band=request.POST.get('pay_band')
-        purpose=request.POST.get('purpose')
-        travel_cost=request.POST.get('travel_cost')
-        road_kms=request.POST.get('road_kms')
-        hospitality_availed=request.POST.get('hospitality_availed')
-        hospitality_not_availed=request.POST.get('hospitality_not_availed')
-        expenses=request.POST.get('expenses')
-        total=request.POST.get('total')
-        less_advance=request.POST.get('less_advance')
-        net=request.POST.get('net')
-        drivelink=request.POST.get('drivelink')
+# @login_required
+# def form(request):
+    # if request.method =="POST":
+    #     institute=request.POST.get('institute')
+    #     email=request.user.email
+    #     project_number=request.POST.get('project_number')
+    #     name=request.POST.get('name')
+    #     roll_number=request.POST.get('roll_number')
+    #     designation=request.POST.get('designation')
+    #     department=request.POST.get('department')
+    #     pay_band=request.POST.get('pay_band')
+    #     purpose=request.POST.get('purpose')
+    #     travel_cost=request.POST.get('travel_cost')
+    #     road_kms=request.POST.get('road_kms')
+    #     hospitality_availed=request.POST.get('hospitality_availed')
+    #     hospitality_not_availed=request.POST.get('hospitality_not_availed')
+    #     expenses=request.POST.get('expenses')
+    #     total=request.POST.get('total')
+    #     less_advance=request.POST.get('less_advance')
+    #     net=request.POST.get('net')
+    #     drivelink=request.POST.get('drivelink')
 
-        name1=request.POST.get('name1')
-        name2=request.POST.get('name2')
-        name3=request.POST.get('name3')
-        name4=request.POST.get('name4')
-        name5=request.POST.get('name5')
+    #     name1=request.POST.get('name1')
+    #     name2=request.POST.get('name2')
+    #     name3=request.POST.get('name3')
+    #     name4=request.POST.get('name4')
+    #     name5=request.POST.get('name5')
         
-        date1=request.POST.get('date1')
-        date2=request.POST.get('date2')
-        date3=request.POST.get('date3')
-        date4=request.POST.get('date4')
-        date5=request.POST.get('date5')
+    #     date1=request.POST.get('date1')
+    #     date2=request.POST.get('date2')
+    #     date3=request.POST.get('date3')
+    #     date4=request.POST.get('date4')
+    #     date5=request.POST.get('date5')
         
-        age1=request.POST.get('age1')
-        age2=request.POST.get('age2')
-        age3=request.POST.get('age3')
-        age4=request.POST.get('age4')
-        age5=request.POST.get('age5')
+    #     age1=request.POST.get('age1')
+    #     age2=request.POST.get('age2')
+    #     age3=request.POST.get('age3')
+    #     age4=request.POST.get('age4')
+    #     age5=request.POST.get('age5')
         
-        rel1=request.POST.get('rel1')
-        rel2=request.POST.get('rel2')
-        rel3=request.POST.get('rel3')
-        rel4=request.POST.get('rel4')
-        rel5=request.POST.get('rel5')
+    #     rel1=request.POST.get('rel1')
+    #     rel2=request.POST.get('rel2')
+    #     rel3=request.POST.get('rel3')
+    #     rel4=request.POST.get('rel4')
+    #     rel5=request.POST.get('rel5')
         
-        part1=request.POST.get('part1')
-        part2=request.POST.get('part2')
-        part3=request.POST.get('part3')
-        part4=request.POST.get('part4')
-        part5=request.POST.get('part5')
+    #     part1=request.POST.get('part1')
+    #     part2=request.POST.get('part2')
+    #     part3=request.POST.get('part3')
+    #     part4=request.POST.get('part4')
+    #     part5=request.POST.get('part5')
         
-        amt1=request.POST.get('amt1')
-        amt2=request.POST.get('amt2')
-        amt3=request.POST.get('amt3')
-        amt4=request.POST.get('amt4')
-        amt5=request.POST.get('amt5')
+    #     amt1=request.POST.get('amt1')
+    #     amt2=request.POST.get('amt2')
+    #     amt3=request.POST.get('amt3')
+    #     amt4=request.POST.get('amt4')
+    #     amt5=request.POST.get('amt5')
         
         
-        # email=request.POST.get('email')
-        form=claimBill(drivelink=drivelink,institute=institute,email=email,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
-        form.save()
-    if(claimBill.objects.filter(email=request.user.email).exists()):
-        plz = claimBill.objects.get(email=request.user.email)
-        return render(request,'filledform.html',context={'username':plz})
-    else:
-        if User_profile.objects.filter(email=request.user.email).exists():
-            plz=User_profile.objects.get(email=request.user.email)
-            # print(plz.email)
-            return render(request,'form.html',context={'username':plz})
-        else:
-            return render(request,'formBase.html',context={'userdata':request.user})
+    #     # email=request.POST.get('email')
+    #     form=claimBill(drivelink=drivelink,institute=institute,email=email,project_number=project_number,name=name ,roll_number=roll_number,designation=designation,department=department,pay_band=pay_band,purpose=purpose,travel_cost=travel_cost,road_kms=road_kms,hospitality_availed=hospitality_availed,hospitality_not_availed=hospitality_not_availed,expenses=expenses,total=total,less_advance=less_advance,net=net,name1=name1,name2=name2,name3=name3,name4=name4,name5=name5,date1=date1,date2=date2,date3=date3,date4=date4,date5=date5,age1=age1,age2=age2,age3=age3,age4=age4,age5=age5,rel1=rel1,rel2=rel2,rel3=rel3,rel4=rel4,rel5=rel5,part1=part1,part2=part2,part3=part3,part4=part4,part5=part5,amt1=amt1,amt2=amt2,amt3=amt3,amt4=amt4,amt5=amt5)
+    #     form.save()
+    # if(claimBill.objects.filter(email=request.user.email).exists()):
+    #     plz = claimBill.objects.get(email=request.user.email)
+    #     return render(request,'filledform.html',context={'username':plz})
+    # else:
+    #     if User_profile.objects.filter(email=request.user.email).exists():
+    #         plz=User_profile.objects.get(email=request.user.email)
+    #         # print(plz.email)
+    #         return render(request,'form.html',context={'username':plz})
+    #     else:
+    #         return render(request,'formBase.html',context={'userdata':request.user})
         # return render(request,'status.html')
     # return render(request,'form.html')    
+@login_required
+def form(request):
+    fr=claimBillForm()
+    filled={}
+    filled['email']
+    filled['name']
+    filled['roll_number']
+    filled['designation']
+    filled['department']
+    filled['purpose']
+    s=True
+    if request.method=="POST":
+        # print(str(request))
+        fr=claimBillForm(request.POST)
+        if fr.is_valid():
+            t=fr.save(commit=False)
+            t.email=request.user.email
+            # t.apl=request.user.profile
+            t.roll_number=request.user.profile.rollno
+            t.name=request.user.profile.name
+            t.designation=request.user.profile.designation
+            t.department=request.user.profile.department
+            t.save()
+            messages.success(request,"Request has been submitted successfully!")
+            messages.info(request,"Please note your application id for future reference  :  "+str(t.pk))
+        else:
+            print(fr.errors)
+            for value in fr.errors.values():
+                messages.info(request,value)
 def registerUser(request):
     form = CreateUserForm()
 
@@ -265,7 +294,7 @@ def pending_requests(request):
     if request.method=="POST":
         if request.user.groups.filter(name="Office"):
             req=request.POST.dict()
-            t=d.get(id=req["id"])
+            t=d.get(pk=req["id"])
             # print(request.POST)
             if req["accept"]=='yes':
                 t.status=Application.ACCEPTED
@@ -274,11 +303,12 @@ def pending_requests(request):
                 t.save()
             else:
                 t.status=Application.REJECTED
+                t.save()
                 messages.warning(request,"Application declined!")
         else:
             messages.warning(request,"You are not allowed for this request")
             redirect("/home")
-    return render(request,'pending.html',context={'AppData':d.filter(status=Application.ACCEPTED)})
+    return render(request,'pending.html',context={'Applications':d.filter(status=Application.PENDING)})
     
 
 
