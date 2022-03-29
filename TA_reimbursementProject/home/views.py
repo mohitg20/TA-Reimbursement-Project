@@ -72,9 +72,9 @@ def status(request):
     dt2=Application.objects.filter(email=request.user.email)
     for d in [dt,dt2]:
         for fr in d:
-            if fr.status==1:
+            if fr.status==Application.ACCEPTED:
                 fr.status=True
-            elif fr.status==0:
+            elif fr.status==Application.REJECTED:
                 fr.status=False
             else:
                 fr.status=None
@@ -188,9 +188,6 @@ def user_profile(request):
 
 @login_required
 def application(request):
-    if not request.user.profile.email:
-        messages.error(request,"Update your Profile first")
-        return redirect('/user_profile')
     fr=ApplicationForm()
     filled={}
     filled['email']=request.user.email
@@ -199,8 +196,8 @@ def application(request):
     filled['Name']=request.user.profile.name
     filled['section']=request.user.profile.department
     s=True
+    admin=False
     if request.method=="POST":
-        # print(str(request))
         fr=ApplicationForm(request.POST)
         if fr.is_valid():
             t=fr.save(commit=False)
@@ -217,11 +214,21 @@ def application(request):
             for value in fr.errors.values():
                 messages.info(request,value)
     elif request.method=="GET":
+        d=Application.objects
         if request.GET.__contains__("pk"):
             s=False
-            filled=Application.objects.filter(email=request.user.email,pk=request.GET.__getitem__("pk"))[0].__dict__
+            if request.user.groups.filter(name="Office"):
+                filled=d.get(pk=request.GET.__getitem__("pk")).__dict__
+                admin=True
+            elif d.filter(email=request.user.email,pk=request.GET.__getitem__("pk")).count()>0:
+                filled=d.get(email=request.user.email,pk=request.GET.__getitem__("pk")).__dict__
+                s=False
             # print(filled)
-    context={'fill_form':filled,'submit':s}
+        else:
+            if not request.user.profile.email:
+                messages.error(request,"Update your Profile first")
+                return redirect('/user_profile')
+    context={'fill_form':filled,'submit':s,"admin":admin}
     return render(request,'application.html',context)
 
 def redirecting(request):
@@ -231,8 +238,8 @@ def redirecting(request):
 def pending_requests(request):
     if request.user.groups.filter(name="Office"):
         d=Application.objects
-        request.method=="hmm"
-        print(request.method)
+        # request.method=="hmm"
+        # print(request.method)
         if request.method=="POST":
             if request.user.groups.filter(name="Office"):
                 req=request.POST.dict()
@@ -243,14 +250,14 @@ def pending_requests(request):
                     messages.success(request,"Application accepted!")
                     # print(Application.objects.get(id=req['id']).status)
                     t.save()
-                elif req["accept"]=='viewapplication':
-                    print(request.method)
-                    request.method="hmmm"
-                    print(request.method)
-                    # return redirect("/application_form?pk="+req["id"])
-                    if request.method=="POST2":
-                        return redirect("/pending")
-                    return render(request,"viewApplication.html",context={'app':t})
+                # elif req["accept"]=='viewapplication':
+                #     # print(request.method)
+                #     # request.method="hmmm"
+                #     # print(request.method)
+                #     # # return redirect("/application_form?pk="+req["id"])
+                #     # if request.method=="POST2":
+                #     #     return redirect("/pending")
+                #     return render(request,"application.html",context={'pk':req["id"]})
                 elif req["accept"]=='no':
                     t.status=Application.REJECTED
                     t.save()

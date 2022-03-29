@@ -1,4 +1,7 @@
-{% extends 'base.html' %}
+
+
+{% extends admin|yesno:'officebase.html,base.html' %}
+
 
 {% block body %}
 <div class="container">
@@ -311,8 +314,9 @@
     var x=document.getElementById("{{key}}")
     if(x){
         x.value = "{{value}}";
-        
+        {% if not submit %}
         x.readOnly=true;
+        {% endif %}
     }
     {%endfor%}
 {% endif %}
