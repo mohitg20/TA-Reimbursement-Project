@@ -91,7 +91,7 @@ def save_user_profile(sender, instance, **kwargs):
     for apl in instance.applications.all():
         apl.profile=instance
 class claimBill(models.Model):
-    apl=models.OneToOneField(Application,on_delete=models.CASCADE,default=None)
+    apl=models.OneToOneField(Application,on_delete=models.CASCADE,default=None,related_name="claimBill")
     # formid=models.IntegerField(default=-1)
     institute=models.CharField(max_length=122)
     email=models.EmailField(default='user@iitk.ac.in',max_length=30)
