@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block title %} Home {% endblock title %}
 {% block body %} 
-<h1>Welcome {{user.email}} ! You are now logged in.</h1> 
+
+<h1 style="text-align:center">Welcome {{user.email}} ! You are now logged in.</h1> 
+<h4 style="text-align:center"> This website is created by Team Innovators to ease the process of Travel Allowance Reimbursement by taking it to the digital level and allowing the user to claim the bill sitting at home.</h4>
+<h5 style="text-align:center">On logging in successfully, you first need to go to the <a href="/user_profile"> My Profile </a> page and update your profile there before proceeding further</h5>
+<h5 style="text-align:center">After successfully updating the profile page, you can go to the <a href="/application_form">Application Form </a> and fill the form for claiming the travel allowance bills</h5>
+<h5 style="text-align:center"> After completeing the form, click on the Submit button and you can proceed to the <a href="/form">Claim Bills </a> tab</h5>
+<h5 style="text-align:center">You can also view the status of your application in the  <a href= "/application_status">Application Status</a> tab of the navigation bar</h5>
 {% endblock body %}
