@@ -18,7 +18,7 @@
   <title>{% block title %}{% endblock title %} | TA-Reimbursement </title>
 {% endblock head %}
 {% block nav %}
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #c0392b;">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #c0392b;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,7 @@
         </li>
       </ul>
       <span class="hello-msg"><p style="margin-top: auto; margin-bottom: auto;">Hello, {{request.user}} </p></span>
-      <span ><a class="nav-link" href="{% url 'logout' %}"><b>Logout</b></a></span>
+      <span ><a class="nav-link" href="{% url 'logout' %}" style="color:antiquewhite;"><b>Logout</b></a></span>
     </div>
   </div>
 </nav>
