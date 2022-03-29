@@ -39,9 +39,13 @@ def loginUser(request):
         if user is not None:
             login(request,user)
             messages.success(request,"Login sucessfull!")
-            if user.groups.filter(name="TrialOffice"):
+            if user.groups.filter(name="Office"):
+                # print("Here 1")
                 return render(request,"adminOffice.html",context={'user':user})
-            else: 
+            elif user.groups.filter(name="Accounts"):
+                return render(request,"accountOffice.html",context={'user':user})
+            else:    
+                # print("Here 2")
                 return render(request,"home.html",context={'user':user})
             # A backend authenticated the credentials
         else:
@@ -55,6 +59,7 @@ def logoutUser(request):
     logout(request)
     return redirect('/login')
 
+@login_required
 def home(request):
     context={
         'user':request.user
@@ -63,7 +68,7 @@ def home(request):
 
 # def pending(request):
 #     return render(request,'pending.html')    
-
+@login_required
 def status(request):
     dt=Form.objects.filter(email=request.user.email)
     dt2=Application.objects.filter(email=request.user.email)
@@ -75,6 +80,7 @@ def status(request):
     # print(request.user.email,dt[0].purpose)
     return render(request,'status.html',context)    
 
+@login_required
 def form(request):
     if request.method =="POST":
         institute=request.POST.get('institute')
@@ -148,7 +154,6 @@ def form(request):
             return render(request,'formBase.html',context={'userdata':request.user})
         # return render(request,'status.html')
     # return render(request,'form.html')    
-
 def registerUser(request):
     form = CreateUserForm()
 
@@ -190,7 +195,7 @@ def user_profile(request):
     else:
         return render(request,'user_profileBase.html',context={'userdata':request.user})
 
- 
+@login_required
 def application(request):
     if request.method =="POST":
         block_yr=request.POST.get('block_yr')
@@ -238,7 +243,7 @@ def application(request):
 def pending_requests(request):
     d=Application.objects
     if request.method=="POST":
-        if request.user.groups.filter(name="TrialOffice"):
+        if request.user.groups.filter(name="Office"):
             req=request.POST.dict()
             t=d.get(id=req["id"])
             # print(request.POST)
