@@ -1,4 +1,5 @@
 import email
+from pickle import GET
 from xml.etree.ElementTree import tostring
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -37,7 +38,7 @@ def loginUser(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request,user)
-            messages.success(request,"Login sucessfull!")
+            messages.success(request,"Login successful!")
             if user.groups.filter(name="Office"):
                 # print("Here 1")
                 return render(request,"adminOffice.html",context={'user':user})
@@ -287,29 +288,44 @@ def application(request):
 #     else:
 #         return render(request,'applicationBase.html',context={'username':request.user})
 #     return render(request,'application.html')
+def redirecting(request):
+    return redirect("/pending")
 
 @login_required
 def pending_requests(request):
-    d=Application.objects
-    if request.method=="POST":
-        if request.user.groups.filter(name="Office"):
-            req=request.POST.dict()
-            t=d.get(pk=req["id"])
-            # print(request.POST)
-            if req["accept"]=='yes':
-                t.status=Application.ACCEPTED
-                messages.success(request,"Application accepted!")
-                # print(Application.objects.get(id=req['id']).status)
-                t.save()
+    if request.user.groups.filter(name="Office"):
+        d=Application.objects
+        request.method=="hmm"
+        print(request.method)
+        if request.method=="POST":
+            if request.user.groups.filter(name="Office"):
+                req=request.POST.dict()
+                t=d.get(pk=req["id"])  
+                # print(request.POST)
+                if req["accept"]=='yes':
+                    t.status=Application.ACCEPTED
+                    messages.success(request,"Application accepted!")
+                    # print(Application.objects.get(id=req['id']).status)
+                    t.save()
+                elif req["accept"]=='viewapplication':
+                    print(request.method)
+                    request.method="hmmm"
+                    print(request.method)
+                    # return redirect("/application_form?pk="+req["id"])
+                    if request.method=="POST2":
+                        return redirect("/pending")
+                    return render(request,"viewApplication.html",context={'app':t})
+                elif req["accept"]=='no':
+                    t.status=Application.REJECTED
+                    t.save()
+                    messages.warning(request,"Application declined!")
             else:
-                t.status=Application.REJECTED
-                t.save()
-                messages.warning(request,"Application declined!")
-        else:
-            messages.warning(request,"You are not allowed for this request")
-            redirect("/home")
-    return render(request,'pending.html',context={'Applications':d.filter(status=Application.PENDING)})
-    
+                messages.warning(request,"You are not allowed for this request")
+                return redirect("/home")
+        return render(request,'pending.html',context={'Applications':d.filter(status=Application.PENDING)})
+    else:
+        messages.warning(request,"You are not allowed for this request")
+        return redirect("/home")
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):

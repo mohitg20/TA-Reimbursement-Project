@@ -10,21 +10,27 @@
         <label class="form-label" for="id">ID</label>
     </div>
     </td>
+    {% comment %} <td>
+      <div class="form-group mb-3">
+        <label class="form-label" for="id">
+    </td> {% endcomment %}
     <td>
       <div class="form-group mb-3" > 
         <label class="form-label" for="email">Email</label>
     </div>
     </td>
+    
     <td>
       <div class="form-group mb-3" > 
         <label class="form-label" for="joining">PF No./Roll No.</label>
     </div>
     </td>
     <td>
-      <div class="form-group mb-3" > 
-        <label class="form-label" for="basic_pay">Basic Pay</label>
+      <div class="form-group mb-6" > 
+        <label class="form-label" for="basic_pay">Application</label>
     </div>
     </td>
+    {% comment %}
     <td>
       <div class="form-group mb-3" > 
         <label class="form-label" for="name">Name</label>
@@ -55,6 +61,7 @@
         <label class="form-label" for="advance">Advance</label>
     </div>
     </td>
+    {% endcomment %}
     <td>
       <div class="form-group mb-3" > 
         <label class="form-label" for="accept">Accept</label>
@@ -68,7 +75,9 @@
   </tr>
 
     {% for event in Applications%}
-
+    {% comment %} <tr>
+    <button name="pk" value="{{event.pk}}" formaction="{%url 'form'%}"><li class="list-group-item list-group-item-{{event.status|yesno:"success,danger,info"}}">Claim-Bill | Bill-id : {{event.id}} | Status : {{event.status|yesno:"Congratulations! Your application is verified,Application Rejected,Verfication still under process"}}</li></button>
+    </tr> {% endcomment %}
      {% comment %} <strong> {{event}}</strong> {% endcomment %}
     <tr>
         <td>
@@ -86,7 +95,7 @@
               <input class="form-control" type="text" id="id" name="id" value="{{event.rollno}}">
           </div>
         </td>
-        <td>
+        {% comment %} <td>
           <div class="form-group mb-3" >
               <input class="form-control" type="text" id="id" name="id" value="{{event.basic_pay}}">
           </div>
@@ -120,10 +129,18 @@
           <div class="form-group mb-3" >
               <input class="form-control" type="text" id="id" name="id" value="{{event.advance}}">
           </div>
-        </td>
+        </td> {% endcomment %}
         <form method="post" action="{%url 'pending'%}">
           {% csrf_token %}
           <input name="id" value={{event.pk}} hidden></input>
+          <td>
+            <div class="form-group mb-3" >
+                {% comment %} <input type="button" value="" /> {% endcomment %}
+                <button type="submit" name="accept" value="viewapplication" style="padding: 5px;border-width: 0px;">
+                <span style="font-size: 21px;">View Application</span>
+                </button>
+            </div>
+          </td>
         <td>
           <div class="form-group mb-3" >
               {% comment %} <input type="button" value="" /> {% endcomment %}
