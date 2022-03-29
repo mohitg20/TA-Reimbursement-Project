@@ -1,46 +1,47 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="container">
 <h4>Indian Institute of Technology, Kanpur</h4>
 <h4>
     Application for Grant of LTC
 </h4>
-
-<form method="POST" action="/application_form" >
+<div class="container bg-light">
+<form method="POST" action="/application_form" class="row g-3" >
     {% csrf_token %}
 
-<table>
+<table class="table">
     <tr>
         <td>
             Block year
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="block_yr" name="block_yr">
+            <div class="col-mb-3">
+                <input class="form-control" type="number" id="block_yr" name="block_yr">
             </div>
         </td>
         <td>
             Email
         </td>
         <td>
-            <div class="form-group">
-                <input type="email" id="email" name="email" value="{{username.email}}" readonly>
+            <div class="col-mb-3">
+                <input class="form-control" type="email" id="email" name="email">
             </div>
         </td>
         <td>
             P.F. No. / Roll No.
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="joining" name="joining" value="{{username.rollno}}">
+            <div class="col-mb-3">
+                <input class="form-control" type="number" id="rollno" name="rollno" >
             </div>
         </td>
     </tr>
 </table>
 <br>
-<div class="form-group">
+<div class="col-mb-3">
     <label for="Basic Pay Rs.">Basic Pay Rs.</label>
-    <input type="number" id="basic_pay" name="basic_pay">
+    <input class="form-control" type="number" id="basic_pay" name="basic_pay">
 </div>
 <br>
 <table>
@@ -52,8 +53,8 @@
             Name
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="Name" name="Name" readonly>
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="Name" name="Name">
             </div>
         </td>
     </tr>
@@ -65,8 +66,8 @@
             Designation
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="Designation" name="Designation" readonly value={{username.designation}}>
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="Designation" name="Designation">
             </div>
         </td>
     </tr>
@@ -78,8 +79,8 @@
             Department/Section
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="section" name="section" readonly value={{username.department}}>
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="section" name="section" >
             </div>
         </td>
     </tr>
@@ -91,8 +92,8 @@
             (a) Whether leave is required for availing L.T.C ?
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="avail" name="avail" placeholder="Yes/No">
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="avail" name="avail" placeholder="Yes/No">
             </div>
         </td>
     </tr>
@@ -104,8 +105,8 @@
             (b)(i) If so, duration of leave applied for
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="duration" name="duration" placeholder="duration">
+            <div class="col-mb-3">
+                <input class="form-control" type="number" id="duration" name="duration" placeholder="duration">
             </div>
         </td>
     </tr>
@@ -117,8 +118,8 @@
             (b)(ii) Date of departure of family, if not availing for himself
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="departure" name="departure" placeholder="date of departure">
+            <div class="col-mb-3">
+                <input class="form-control" type="number" id="departure" name="departure" placeholder="date of departure">
             </div>
         </td>
     </tr>
@@ -130,8 +131,8 @@
             (c) Nature of leave
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="nature" name="nature" placeholder="nature">
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="nature" name="nature" placeholder="nature">
             </div>
         </td>
     </tr>
@@ -143,8 +144,8 @@
             (d) Purpose
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="Purpose" name="Purpose" placeholder="Purpose">
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="Purpose" name="Purpose" placeholder="Purpose">
             </div>
         </td>
     </tr>
@@ -156,8 +157,8 @@
             (i) Whether L.T.C is applied for going to home town or elsewhere?
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="place" name="place" placeholder="Home town/Elsewhere">
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="place" name="place" placeholder="Home town/Elsewhere">
             </div>
         </td>
     </tr>
@@ -169,8 +170,8 @@
             (ii) The place of visit
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="place1" name="place1" placeholder="place of visit">
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="place1" name="place1" placeholder="place of visit">
             </div>
         </td>
     </tr>
@@ -182,8 +183,8 @@
             Address during leave
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="address" name="address" placeholder="address">
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="address" name="address" placeholder="address">
             </div>
         </td>
     </tr>
@@ -195,8 +196,8 @@
             Mode
         </td>
         <td>
-            <div class="form-group">
-                <input type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air">
+            <div class="col-mb-3">
+                <input class="form-control" type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air">
             </div>
         </td>
     </tr>
@@ -231,13 +232,13 @@
             1.
         </td>
         <td>
-            <div class="form-group">
-                <input type="name" id="Name1" name="Name1" >
+            <div class="col-mb-3">
+                <input class="form-control" type="name" id="Name1" name="Name1" >
             </div>
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="Age1" name="Age1" >
+            <div class="col-mb-3">
+                <input class="form-control" type="number" id="Age1" name="Age1" >
             </div>
         </td>
     </tr>
@@ -249,13 +250,13 @@
             2.
         </td>
         <td>
-            <div class="form-group">
-                <input type="name" id="Name2" name="Name2" >
+            <div class="col-mb-3">
+                <input class="form-control" type="name" id="Name2" name="Name2" >
             </div>
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="Age2" name="Age2" >
+            <div class="col-mb-3">
+                <input class="form-control" type="number" id="Age2" name="Age2" >
             </div>
         </td>
     </tr>
@@ -267,13 +268,13 @@
             3.
         </td>
         <td>
-            <div class="form-group">
-                <input type="name" id="Name3" name="Name3" >
+            <div class="col-mb-3">
+                <input class="form-control" type="name" id="Name3" name="Name3" >
             </div>
         </td>
         <td>
-            <div class="form-group">
-                <input type="number" id="Age3" name="Age3" >
+            <div class="col-mb-3">
+                <input class="form-control" type="number" id="Age3" name="Age3" >
             </div>
         </td>
     </tr>
@@ -287,13 +288,33 @@
 </strong></span>
 <span>
     Rs.
-    <div class="form-group">
-        <input type="number" id="advance" name="advance" >
+    <div class="col-mb-3">
+        <input class="form-control" type="number" id="advance" name="advance" >
     </div>
 </span>
 
 
 <br>
-<button type="submit">Submit</button>
+{% if submit %}
+<div>
+<button class="btn btn-primary" type="submit">Submit</button>
+</div>
+{% endif %}
 </form>
+</div>
+</div>
 {% endblock body %}
+
+{% block script %}
+{% if fill_form %}
+    {%for key,value in fill_form.items%}
+    var x=document.getElementById("{{key}}")
+    if(x){
+        x.value = "{{value}}";
+        
+        x.readOnly=true;
+    }
+    {%endfor%}
+{% endif %}
+{% endblock script %}
+
