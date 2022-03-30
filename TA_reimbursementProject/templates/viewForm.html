@@ -24,26 +24,26 @@
         <tr>
             <div class="form-group mb-3" > 
                 <label class="form-label" for="application_pk">Enter Application ID</label>
-                <input class="form-control" type="text" id="application_pk2" name="application_pk" placeholder="Application ID" required>
+                <input class="form-control" type="text" id="application_pk2" name="application_pk" placeholder="Application ID">
             </div>
         </tr>
         <tr>
             <td>
                 <div class="form-group mb-3" > 
                     <label class="form-label" for="institute">Institute A/C  or  CPDA</label>
-                    <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute A/C or CPDA">
+                    <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute A/C or CPDA" value={{app.institute}} readonly>
                 </div>
             </td>
             <td>
                 <div class="form-group mb-3" > 
                     <label class="form-label" for="email">Email</label>
-                    <input value="{{username.email}}" class="form-control" type="email" id="email" name="email"  placeholder="Enter your email">
+                    <input value="{{app.email}}" class="form-control" type="email" id="email" name="email"  placeholder="Enter your email" readonly>
                 </div>
             </td>
             <td>
                 <div class="form-group mb-3" >
                     <label class="form-label" for="project_number">Project Number</label>
-                    <input class="form-control" type="number" id="project_number" name="project_number" placeholder="Enter project number">
+                    <input class="form-control" type="number" id="project_number" name="project_number" placeholder="Enter project number"value={{app.project_number}} readonly>
                 </div>
             </td>
         </tr>
@@ -51,19 +51,19 @@
             <td>
                 <div class="form-group mb-3" >
                     <label class="form-label" for="name">Name</label>
-                    <input value="{{username.name}}" class="form-control" type="text" id="name" name="name" placeholder="Enter your name">
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Enter your name"value={{app.name}} readonly>
                 </div>
             </td>
             <td>
                 <div class="form-group mb-3" >
                     <label class="form-label" for="roll_number">Roll No. / PF No.</label>
-                    <input value="{{username.rollno}}" class="form-control" type="number" id="roll_number" name="roll_number" placeholder="Enter your roll number">
+                    <input class="form-control" type="number" id="roll_number" name="roll_number" placeholder="Enter your roll number"value={{app.roll_number}} readonly>
                 </div>
             </td>
             <td>
                 <div class="form-group mb-3" >
                     <label class="form-label" for="designation">Designation</label>
-                    <input value="{{username.designation}}" class="form-control" type="text" id="designation" name="designation" placeholder="Your designation">
+                    <input class="form-control" type="text" id="designation" name="designation" placeholder="Your designation"value={{app.designation}} readonly>
                 </div>
             </td>
         </tr>
@@ -72,19 +72,19 @@
             <td>
                 <div class="form-group mb-3" >
                     <label class="form-label" for="department">Department</label>
-                    <input value="{{username.department}}" class="form-control" type="text" id="department" name="department" placeholder="Enter your department name">
+                    <input class="form-control" type="text" id="department" name="department" placeholder="Enter your department name"value={{app.department}} readonly>
                 </div> 
             </td>
             <td>
                 <div class="form-group mb-3" >
                     <label class="form-label" for="pay_band">Pay Band</label>
-                    <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="Enter your pay band">
+                    <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="Enter your pay band"value={{app.pay_band}} readonly>
                 </div>
             </td>
             <td>
                 <div class="form-group mb-3" >
                     <label class="form-label" for="purpose">Purpose</label>
-                    <input class="form-control" type="text" id="purpose" name="purpose" placeholder="Purpose of journey">
+                    <input class="form-control" type="text" id="purpose" name="purpose" placeholder="Purpose of journey"value={{app.purpose}} readonly>
                 </div>
             </td>
         </tr>
@@ -102,7 +102,7 @@
             </td>  
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="travel_cost" name="travel_cost" placeholder="Total Travel Cost">
+                    <input class="form-control" type="number" id="travel_cost" name="travel_cost" placeholder="Total Travel Cost"value={{app.travel_cost}} readonly>
                 </div>
             </td>
         </tr> 
@@ -115,7 +115,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="road_kms" name="road_kms" placeholder="Distance in KMs">
+                    <input class="form-control" type="number" id="road_kms" name="road_kms" placeholder="Distance in KMs"value={{app.road_kms}} readonly>
                 </div>
             </td>
         </tr>
@@ -128,7 +128,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="hospitality_availed" name="hospitality_availed" >
+                    <input class="form-control" type="number" id="hospitality_availed" name="hospitality_availed" value={{app.hospitality_availed}} readonly>
                 </div>
             </td>
         </tr>
@@ -141,7 +141,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="hospitality_not_availed" name="hospitality_not_availed" >
+                    <input class="form-control" type="number" id="hospitality_not_availed" name="hospitality_not_availed"value={{app.hospitality_not_availed}} readonly >
                 </div>
             </td>
         </tr>
@@ -154,7 +154,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="expenses" name="expenses" placeholder="Other Expenses">
+                    <input class="form-control" type="number" id="expenses" name="expenses" placeholder="Other Expenses"value={{app.expenses}} readonly>
                 </div>
             </td>
         </tr>
@@ -167,7 +167,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="total" name="total" placeholder="Grand Total">
+                    <input class="form-control" type="number" id="total" name="total" placeholder="Grand Total"value={{app.total}} readonly>
                 </div>
             </td>
         </tr>
@@ -180,7 +180,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="less_advance" name="less_advance" placeholder="Less Advance">
+                    <input class="form-control" type="number" id="less_advance" name="less_advance" placeholder="Less Advance"value={{app.less_advance}} readonly>
                 </div>
             </td>
         </tr>
@@ -193,7 +193,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="net" name="net" placeholder="Net Claim">
+                    <input class="form-control" type="number" id="net" name="net" placeholder="Net Claim"value={{app.net}} readonly>
                 </div>
             </td>
         </tr>
@@ -201,7 +201,7 @@
     <br>
     <div class="col-md-6">
         <label for="drivelink" class="form-label">Drive Link (with view access)</label>
-        <input type="text" class="form-control" id="drivelink" name="drivelink" placeholder="Must contain all the receipts and tickets" >
+        <input type="text" class="form-control" id="drivelink" name="drivelink" placeholder="Must contain all the receipts and tickets" value={{app.drivelink}} readonly>
     </div>
     <br>
     <h6>Details of Family Members(in case of LTC or Home town concession)</h6>
@@ -229,16 +229,16 @@
                 1.
             </td>
             <td>
-                <input class="form-control" type="text" id="name1" name="name1" placeholder="Enter your name">
+                <input class="form-control" type="text" id="name1" name="name1" placeholder="Enter your name"value={{app.name1}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="date1" name="date1" placeholder="dd/mm/yyyy">
+                <input class="form-control" type="text" id="date1" name="date1" placeholder="dd/mm/yyyy"value={{app.date1}} readonly>
             </td>
             <td>
-                <input class="form-control" type="number" id="age1" name="age1" placeholder="Enter your age">
+                <input class="form-control" type="number" id="age1" name="age1" placeholder="Enter your age"value={{app.age1}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship">
+                <input class="form-control" type="text" id="rel1" name="rel1" placeholder="Relationship"value={{app.rel1}} readonly>
             </td>
         </tr>
         <tr>
@@ -246,16 +246,16 @@
                 2.
             </td>
             <td>
-                <input class="form-control" type="text" id="name2" name="name2" placeholder="Enter your name">
+                <input class="form-control" type="text" id="name2" name="name2" placeholder="Enter your name"value={{app.name2}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="date2" name="date2" placeholder="dd/mm/yyyy">
+                <input class="form-control" type="text" id="date2" name="date2" placeholder="dd/mm/yyyy"value={{app.date2}} readonly>
             </td>
             <td>
-                <input class="form-control" type="number" id="age2" name="age2" placeholder="Enter your age">
+                <input class="form-control" type="number" id="age2" name="age2" placeholder="Enter your age"value={{app.age2}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="rel2" name="rel2" placeholder="Relationship">
+                <input class="form-control" type="text" id="rel2" name="rel2" placeholder="Relationship"value={{app.rel2}} readonly>
             </td>
         </tr>
         <tr>
@@ -263,16 +263,16 @@
                 3.
             </td>
             <td>
-                <input class="form-control" type="text" id="name3" name="name3" placeholder="Enter your name">
+                <input class="form-control" type="text" id="name3" name="name3" placeholder="Enter your name"value={{app.name3}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="date3" name="date3" placeholder="dd/mm/yyyy">
+                <input class="form-control" type="text" id="date3" name="date3" placeholder="dd/mm/yyyy"value={{app.date3}} readonly>
             </td>
             <td>
-                <input class="form-control" type="number" id="age3" name="age3" placeholder="Enter your age">
+                <input class="form-control" type="number" id="age3" name="age3" placeholder="Enter your age"value={{app.age3}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="rel3" name="rel3" placeholder="Relationship">
+                <input class="form-control" type="text" id="rel3" name="rel3" placeholder="Relationship"value={{app.rel3}} readonly>
             </td>
         </tr>
         <tr>
@@ -280,16 +280,16 @@
                 4.
             </td>
             <td>
-                <input class="form-control" type="text" id="name4" name="name4" placeholder="Enter your name">
+                <input class="form-control" type="text" id="name4" name="name4" placeholder="Enter your name"value={{app.name4}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="date4" name="date4" placeholder="dd/mm/yyyy">
+                <input class="form-control" type="text" id="date4" name="date4" placeholder="dd/mm/yyyy"value={{app.date4}} readonly>
             </td>
             <td>
-                <input class="form-control" type="number" id="age4" name="age4" placeholder="Enter your age">
+                <input class="form-control" type="number" id="age4" name="age4" placeholder="Enter your age"value={{app.age4}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="rel4" name="rel4" placeholder="Relationship">
+                <input class="form-control" type="text" id="rel4" name="rel4" placeholder="Relationship"value={{app.rel4}} readonly>
             </td>
         </tr>
         <tr>
@@ -297,16 +297,16 @@
                 5.
             </td>
             <td>
-                <input class="form-control" type="text" id="name5" name="name5" placeholder="Enter your name">
+                <input class="form-control" type="text" id="name5" name="name5" placeholder="Enter your name"value={{app.name5}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="date5" name="date5" placeholder="dd/mm/yyyy">
+                <input class="form-control" type="text" id="date5" name="date5" placeholder="dd/mm/yyyy"value={{app.date5}} readonly>
             </td>
             <td>
-                <input class="form-control" type="number" id="age5" name="age5" placeholder="Enter your age">
+                <input class="form-control" type="number" id="age5" name="age5" placeholder="Enter your age"value={{app.age5}} readonly>
             </td>
             <td>
-                <input class="form-control" type="text" id="rel5" name="rel5" placeholder="Relationship">
+                <input class="form-control" type="text" id="rel5" name="rel5" placeholder="Relationship"value={{app.rel5}} readonly>
             </td>
         </tr>
     </table>
@@ -332,10 +332,10 @@
                 1.
             </td>
             <td>
-                <input class="form-control" type="text" id="part1" name="part1" >
+                <input class="form-control" type="text" id="part1" name="part1" value={{app.part1}} readonly>
             </td>
             <td>
-                <input class="form-control" type="number" id="amt1" name="amt1" placeholder="Rs.">
+                <input class="form-control" type="number" id="amt1" name="amt1" placeholder="Rs."value={{app.amt1}} readonly>
             </td>
             
         </tr>
@@ -344,10 +344,10 @@
                 2.
             </td>
             <td>
-                <input class="form-control" type="text" id="part2" name="part2" >
+                <input class="form-control" type="text" id="part2" name="part2"value={{app.part2}} readonly >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt2" name="amt2" placeholder="Rs.">
+                <input class="form-control" type="number" id="amt2" name="amt2" placeholder="Rs."value={{app.amt2}} readonly>
             </td>
             
         </tr>
@@ -356,10 +356,10 @@
                 3.
             </td>
             <td>
-                <input class="form-control" type="text" id="part3" name="part3" >
+                <input class="form-control" type="text" id="part3" name="part3"value={{app.part3}} readonly >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt3" name="amt3" placeholder="Rs.">
+                <input class="form-control" type="number" id="amt3" name="amt3" placeholder="Rs."value={{app.amt3}} readonly>
             </td>
             
         </tr>
@@ -368,10 +368,10 @@
                 4.
             </td>
             <td>
-                <input class="form-control" type="text" id="part4" name="part4" >
+                <input class="form-control" type="text" id="part4" name="part4"value={{app.part4}} readonly >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt4" name="amt4" placeholder="Rs.">
+                <input class="form-control" type="number" id="amt4" name="amt4" placeholder="Rs."value={{app.amt4}} readonly>
             </td>
             
         </tr>
@@ -380,10 +380,10 @@
                 5.
             </td>
             <td>
-                <input class="form-control" type="text" id="part5" name="part5" >
+                <input class="form-control" type="text" id="part5" name="part5" value={{app.part5}} readonly>
             </td>
             <td>
-                <input class="form-control" type="number" id="amt5" name="amt5" placeholder="Rs.">
+                <input class="form-control" type="number" id="amt5" name="amt5" placeholder="Rs."value={{app.amt5}} readonly>
             </td>
             
         </tr>
