@@ -10,10 +10,6 @@
         <label class="form-label" for="id">ID</label>
     </div>
     </td>
-    {% comment %} <td>
-      <div class="form-group mb-3">
-        <label class="form-label" for="id">
-    </td> {% endcomment %}
     <td>
       <div class="form-group mb-3" > 
         <label class="form-label" for="email">Email</label>
@@ -30,38 +26,6 @@
         <label class="form-label" for="basic_pay">Application</label>
     </div>
     </td>
-    {% comment %}
-    <td>
-      <div class="form-group mb-3" > 
-        <label class="form-label" for="name">Name</label>
-    </div>
-    </td>
-    <td>
-      <div class="form-group mb-3" > 
-        <label class="form-label" for="designation">Designation</label>
-    </div>
-    </td>
-    <td>
-      <div class="form-group mb-3" > 
-        <label class="form-label" for="department">Department</label>
-    </div>
-    </td>
-    <td>
-      <div class="form-group mb-3" > 
-        <label class="form-label" for="purpose">Purpose</label>
-    </div>
-    </td>
-    <td>
-      <div class="form-group mb-3" > 
-        <label class="form-label" for="mode">Mode</label>
-    </div>
-    </td>
-    <td>
-      <div class="form-group mb-3" > 
-        <label class="form-label" for="advance">Advance</label>
-    </div>
-    </td>
-    {% endcomment %}
     <td>
       <div class="form-group mb-3" > 
         <label class="form-label" for="accept">Accept</label>
@@ -75,10 +39,6 @@
   </tr>
 
     {% for event in Applications%}
-    {% comment %} <tr>
-    <button name="pk" value="{{event.pk}}" formaction="{%url 'form'%}"><li class="list-group-item list-group-item-{{event.status|yesno:"success,danger,info"}}">Claim-Bill | Bill-id : {{event.id}} | Status : {{event.status|yesno:"Congratulations! Your application is verified,Application Rejected,Verfication still under process"}}</li></button>
-    </tr> {% endcomment %}
-     {% comment %} <strong> {{event}}</strong> {% endcomment %}
     <tr>
         <td>
             <div class="form-group mb-3" >
@@ -95,41 +55,6 @@
               <input class="form-control" type="text" id="id" name="id" value="{{event.rollno}}">
           </div>
         </td>
-        {% comment %} <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.basic_pay}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.Name}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.Designation}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.section}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.Purpose}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.mode}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.advance}}">
-          </div>
-        </td> {% endcomment %}
         <form method="post" action="{%url 'pending'%}">
           {% csrf_token %}
           <input name="pk" value={{event.pk}} hidden></input>
@@ -162,10 +87,6 @@
     {% endfor %}
 
     {% for event in Forms%}
-    {% comment %} <tr>
-    <button name="pk" value="{{event.pk}}" formaction="{%url 'form'%}"><li class="list-group-item list-group-item-{{event.status|yesno:"success,danger,info"}}">Claim-Bill | Bill-id : {{event.id}} | Status : {{event.status|yesno:"Congratulations! Your application is verified,Application Rejected,Verfication still under process"}}</li></button>
-    </tr> {% endcomment %}
-     {% comment %} <strong> {{event}}</strong> {% endcomment %}
     <tr>
         <td>
             <div class="form-group mb-3" >
@@ -182,41 +103,6 @@
               <input class="form-control" type="text" id="id" name="id" value="{{event.rollno}}">
           </div>
         </td>
-        {% comment %} <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.basic_pay}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.Name}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.Designation}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.section}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.Purpose}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.mode}}">
-          </div>
-        </td>
-        <td>
-          <div class="form-group mb-3" >
-              <input class="form-control" type="text" id="id" name="id" value="{{event.advance}}">
-          </div>
-        </td> {% endcomment %}
         <form method="post" action="{%url 'pending'%}">
           {% csrf_token %}
           <input name="pk" value={{event.pk}} hidden></input>
