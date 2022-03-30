@@ -97,6 +97,7 @@ def form(request):
     filled['department']=request.user.profile.department
     # filled['purpose']
     s=True
+    admin=False
     level=1
     d=Application.objects
     if request.method=="POST":
@@ -128,15 +129,19 @@ def form(request):
                 filled['application_pk2']=request.GET.__getitem__("application_pk")
                 filled['purpose']=d.get(pk=request.GET.__getitem__("application_pk")).Purpose
                 level=2
-        elif request.GET.__contains__("pk"):
+        elif request.GET.__contains__("pk") and request.user.groups.filter(name="Accounts"):
             c=claimBill.objects
-            if c.filter(email=request.user.email,pk=request.GET.__getitem__("pk")).count()==0:
+            if c.filter(pk=request.GET.__getitem__("pk")).count()==0:
                 messages.warning(request,"Bill not found")
             else:
                 level=2
-                filled=c.get(email=request.user.email,pk=request.GET.__getitem__("pk")).__dict__
+                admin=True
+                
+                filled=c.get(pk=request.GET.__getitem__("pk")).__dict__
+                filled["application_pk2"]=c.get(pk=request.GET.__getitem__("pk")).apl.pk
+                print(filled["application_pk2"])
                 s=False
-    context={'fill_form':filled,'submit':s,'level':level}
+    context={'fill_form':filled,'submit':s,'level':level,'admin':admin}
     return render(request,'form.html',context)
 def registerUser(request):
     form = CreateUserForm()
@@ -257,17 +262,21 @@ def pending_requests(request):
         d=claimBill.objects
         if request.method=="POST":
             req=request.POST.dict()
-            t=d.get(pk=req["pk"])  
-            if req["accept"]=='yes':
-                t.status=Application.ACCEPTED
-                messages.success(request,"Application accepted!")
-                t.save()
-            elif req["accept"]=='no':
-                t.status=Application.REJECTED
-                t.save()
-                messages.warning(request,"Application declined!")
-        return render(request,'pending.html',context={'Applications':d.filter(status=Application.PENDING)})("/home")
-        return render(request,'pending.html',context={'Applications':d.filter(status=claimBill.PENDING)})
+            if "pk" in req:
+                t=d.get(pk=req["pk"])  
+                if req["accept"]=='yes':
+                    t.status=Application.ACCEPTED
+                    messages.success(request,"Claim accepted!")
+                    t.save()
+                elif req["accept"]=='no':
+                    t.status=Application.REJECTED
+                    t.save()
+                    messages.warning(request,"Claim declined!")
+            else:
+                messages.error(request,"Please select an Application")
+        print(d)
+        return render(request,'pending.html',context={'Forms':d.filter(status=claimBill.PENDING)})
+        # return render(request,'pending.html',context={'Applications':d.filter(status=claimBill.PENDING)})
     
     else:
         messages.warning(request,"You are not allowed for this request")

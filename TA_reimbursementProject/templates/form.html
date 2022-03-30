@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends admin|yesno:'officebase.html,base.html' %}
 {% block title %}Claim Bill{% endblock title %}
 {% block body %} 
 <h4 style="text-align: center;">Indian Institute of Technology, Kanpur</h4>
@@ -396,7 +396,7 @@
     {% comment %} <button type="submit">Submit</button> {% endcomment %}
     {%if submit%}
     <div class="col-12" style="padding: 20px 0;">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary" type="submit">{{ admin|yesno:"Update,Submit" }}</button>
     </div> 
     {%endif%}
 </form>
@@ -406,11 +406,12 @@
 {% block script %}
 {% if fill_form %}
     {%for key,value in fill_form.items%}
-    var x=document.getElementById("{{key}}");
+    var x=document.getElementById("{{key}}")
     if(x){
         x.value = "{{value}}";
-        
+        {% if not admin %}
         x.readOnly=true;
+        {% endif %}
     }
     {%endfor%}
 {% endif %}
