@@ -298,9 +298,9 @@
 
 
 <br>
-{% if submit %}
+{% if submit or admin %}
 <div>
-<button class="btn btn-primary" type="submit">Submit</button>
+<button class="btn btn-primary" type="submit">{{ admin|yesno:"Update,Submit" }}</button>
 </div>
 {% endif %}
 </form>
@@ -314,7 +314,7 @@
     var x=document.getElementById("{{key}}")
     if(x){
         x.value = "{{value}}";
-        {% if not submit %}
+        {% if not admin %}
         x.readOnly=true;
         {% endif %}
     }
