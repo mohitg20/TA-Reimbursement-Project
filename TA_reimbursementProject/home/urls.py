@@ -14,7 +14,6 @@ urlpatterns = [
     path('application_status',views.status, name="application_status" ),
     path('application_form',views.application, name="application_form" ),
     path('pending',views.pending_requests, name="pending"),
-    path('redirecting',views.redirecting,name="redirecting")
     # add forget password
 
 ]

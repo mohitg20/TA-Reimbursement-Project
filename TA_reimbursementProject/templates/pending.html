@@ -132,11 +132,11 @@
         </td> {% endcomment %}
         <form method="post" action="{%url 'pending'%}">
           {% csrf_token %}
-          <input name="pk" value={{event.pk}} hidden></input>
+          <input name="id" value={{event.pk}} hidden></input>
           <td>
             <div class="form-group mb-3" >
                 {% comment %} <input type="button" value="" /> {% endcomment %}
-                <button type="submit" formaction={%url 'application_form'%} formmethod="GET" style="padding: 5px;border-width: 0px;">
+                <button type="submit" name="accept" value="viewapplication" style="padding: 5px;border-width: 0px;">
                 <span style="font-size: 21px;">View Application</span>
                 </button>
             </div>
@@ -163,4 +163,3 @@
 
 </table>
 {% endblock body %}
-
