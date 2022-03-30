@@ -238,57 +238,35 @@ def redirecting(request):
 def pending_requests(request):
     if request.user.groups.filter(name="Office"):
         d=Application.objects
-        request.method=="hmm"
-        print(request.method)
         if request.method=="POST":
-            if request.user.groups.filter(name="Office"):
-                req=request.POST.dict()
-                t=d.get(pk=req["id"])  
-                # print(request.POST)
+            req=request.POST.dict()
+            if "pk" in req:
+                t=d.get(pk=req["pk"])  
                 if req["accept"]=='yes':
                     t.status=Application.ACCEPTED
                     messages.success(request,"Application accepted!")
-                    # print(Application.objects.get(id=req['id']).status)
                     t.save()
-                elif req["accept"]=='viewapplication':
-                    print(request.method)
-                    request.method="hmmm"
-                    print(request.method)
-                    # return redirect("/application_form?pk="+req["id"])
-                    if request.method=="POST2":
-                        return redirect("/pending")
-                    return render(request,"viewApplication.html",context={'app':t})
                 elif req["accept"]=='no':
                     t.status=Application.REJECTED
                     t.save()
                     messages.warning(request,"Application declined!")
             else:
-                messages.warning(request,"You are not allowed for this request")
-                return redirect("/home")
+                messages.error(request,"Please select an Application")
         return render(request,'pending.html',context={'Applications':d.filter(status=Application.PENDING)})
     elif request.user.groups.filter(name="Accounts"):
         d=claimBill.objects
         if request.method=="POST":
-            if request.user.groups.filter(name="Accounts"):
-                req=request.POST.dict()
-                t=d.get(pk=req["id"])  
-                if req["accept"]=='yes':
-                    t.status=claimBill.ACCEPTED
-                    messages.success(request,"Application accepted!")
-                    # print(Application.objects.get(id=req['id']).status)
-                    t.save()
-                elif req["accept"]=='viewapplication':
-                    request.method="hmmm"#Dont remove this line
-                    if request.method=="POST2":
-                        return redirect("/pending")
-                    return render(request,"viewForm.html",context={'app':t})
-                elif req["accept"]=='no':
-                    t.status=claimBill.REJECTED
-                    t.save()
-                    messages.warning(request,"Application declined!")
-            else:
-                messages.warning(request,"You are not allowed for this request")
-                return redirect("/home")
+            req=request.POST.dict()
+            t=d.get(pk=req["pk"])  
+            if req["accept"]=='yes':
+                t.status=Application.ACCEPTED
+                messages.success(request,"Application accepted!")
+                t.save()
+            elif req["accept"]=='no':
+                t.status=Application.REJECTED
+                t.save()
+                messages.warning(request,"Application declined!")
+        return render(request,'pending.html',context={'Applications':d.filter(status=Application.PENDING)})("/home")
         return render(request,'pending.html',context={'Applications':d.filter(status=claimBill.PENDING)})
     
     else:
