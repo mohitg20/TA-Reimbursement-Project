@@ -125,6 +125,8 @@ def form(request):
                 messages.warning(request,"Application not found")
             elif d.get(email=request.user.email,pk=request.GET.__getitem__("application_pk")).status!=Application.ACCEPTED:
                 messages.warning(request,"Application is not yet accepted")
+            elif hasattr(d.get(email=request.user.email,pk=request.GET.__getitem__("application_pk")),"claimBill"):
+                messages.info(request,"You have already submitted claim for this application")
             else:
                 filled['application_pk2']=request.GET.__getitem__("application_pk")
                 filled['purpose']=d.get(pk=request.GET.__getitem__("application_pk")).Purpose
