@@ -1,6 +1,9 @@
 # TA-Reimbursement-Project
 
+[![Build Status](https://github.com/nsingla20/TA-Reimbursement-Project/actions/workflows/django.yml/badge.svg)](https://travis-ci.org/joemccann/dillinger)
+
 `TA-Reimbursement-Project` contains source code folder named `TA_reimbursementProject`, which comprises of-:
+
 1. **home**:  
 It is the app of our project maintaining various files namely -:  
 
@@ -11,7 +14,7 @@ It is the app of our project maintaining various files namely -:
     (iii) `urls.py`: maintains various urls of different pages.  
 
     (iv) `views.py`: used to store different attributes/information for storing in database.  
-      
+
     (v) `apps.py`: contains file created so as to include configuration for the app.  
 
     (vi) `forms.py`: used for user authentication
@@ -24,7 +27,7 @@ It is the app of our project maintaining various files namely -:
 
     (iii) `asgi.py` and `wsgi.py` which contain standard python source files
 
-3. **templates**:   
+3. **templates**:
 It has the HTML source files. The major files used are:  
 
     (i) `application`: which contains Application Form  
@@ -47,21 +50,25 @@ It has the HTML source files. The major files used are:
 
     (x) `filledform`: displays the filled form
 
-4. **db.sqlite3**:   
+4. **db.sqlite3**:
 `SQLITE3` file which is the standard database of Django framework.
 
 5. **manage.py**: Inbulit python file containing basic implementation of framework.
 
-## How to Run 
+## How to Run
+
 Clone the repository:
+
 ```
 git clone https://github.com/mohitg20/TA-Reimbursement-Project.git
 cd TA_reimbursementProject
 ```
+
 Install all the dependencies
 Run the server:
 
 ```
 python manage.py runserver
 ```
+
 Go on the localhost web address which must have been printed on the terminal.
