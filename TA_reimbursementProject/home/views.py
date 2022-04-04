@@ -282,7 +282,7 @@ def pending_requests(request):
     
     else:
         messages.warning(request,"You are not allowed for this request")
-        return redirect("/home")
+        return redirect("/home") 
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):

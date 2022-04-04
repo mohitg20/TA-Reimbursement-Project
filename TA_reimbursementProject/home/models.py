@@ -23,17 +23,17 @@ from django.db.models.signals import post_save
     
 class User_profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profile")
-    name = models.CharField(max_length=30)
-    email =models.EmailField(max_length=30)
-    rollno = models.CharField(max_length=10)
-    designation = models.CharField(max_length=30)
-    department = models.CharField(max_length=30)
-    bankname = models.CharField(max_length=30)
-    ACtype = models.CharField(max_length=10)
-    AC = models.CharField(max_length=20)
-    IFSC = models.CharField(max_length=20)
-    aadhar = models.CharField(max_length=15)
-    mobile = models.CharField(max_length=15)
+    name = models.CharField(default="NA",max_length=30)
+    email =models.EmailField(default="user@iitk.ac.in",max_length=30)
+    rollno = models.CharField(default="NA",max_length=10)
+    designation = models.CharField(default="NA",max_length=30)
+    department = models.CharField(default="NA",max_length=30)
+    bankname = models.CharField(default="NA",max_length=30)
+    ACtype = models.CharField(default="NA",max_length=10)
+    AC = models.CharField(default="NA",max_length=20)
+    IFSC = models.CharField(default="NA",max_length=20)
+    aadhar = models.CharField(default="NA",max_length=15)
+    mobile = models.CharField(default="NA",max_length=15)
     def __str__(self):
         return self.email
 
@@ -64,12 +64,12 @@ class Application(models.Model):
     address=models.CharField(default='NA',max_length=122)
     mode=models.CharField(default='NA',max_length=122)
     Name1=models.CharField(default='NA',max_length=122)
-    Age1=models.CharField(default='' , max_length=122)
+    Age1=models.CharField(default='NA' , max_length=122)
     Name2=models.CharField(default='NA',max_length=122)
-    Age2=models.CharField(default='' , max_length=122)
+    Age2=models.CharField(default='NA' , max_length=122)
     Name3=models.CharField(default='NA',max_length=122)
-    Age3=models.CharField(default='' , max_length=122)
-    advance=models.CharField(default='' , max_length=122)
+    Age3=models.CharField(default='NA' , max_length=122)
+    advance=models.CharField(default='NA' , max_length=122)
     REJECTED = 0
     PENDING = -1
     ACCEPTED = 1
