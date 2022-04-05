@@ -1,6 +1,6 @@
 # TA-Reimbursement-Project
 
-[![Build Status](https://github.com/nsingla20/TA-Reimbursement-Project/actions/workflows/django.yml/badge.svg)](https://travis-ci.org/joemccann/dillinger)
+[![Build Status](https://github.com/mohitg20/TA-Reimbursement-Project/actions/workflows/django.yml/badge.svg)](https://github.com/mohitg20/TA-Reimbursement-Project)
 
 `TA-Reimbursement-Project` contains source code folder named `TA_reimbursementProject`, which comprises of-:
 
