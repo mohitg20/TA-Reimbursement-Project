@@ -1,0 +1,1 @@
+web: gunicorn TA_reimbursementProject.wsgi --log-file -
