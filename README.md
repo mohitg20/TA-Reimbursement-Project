@@ -65,6 +65,13 @@ cd TA_reimbursementProject
 ```
 
 Install all the dependencies
+
+Make sure you install `setuptools` using `pip` before installing from the `requirements.txt`
+```
+pip install setuptools
+pip install -r requirements.txt
+```
+
 Run the server:
 
 ```
