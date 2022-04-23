@@ -88,11 +88,7 @@
     var x=document.getElementById("{{key}}")
     if(x){
         x.value = "{{value}}";
-        {% comment %} console.log(x.value)
-        x.readOnly=true; {% endcomment %}
-        if({{key}}=="email")x.readOnly=true;
-        else x.readOnly=false
-        
+        x.readOnly=true;        
     }
     {%endfor%}
 {% endif %}
