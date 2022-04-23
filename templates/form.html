@@ -26,13 +26,13 @@
         <tr>
             <div class="form-group mb-3" > 
                 <label class="form-label" for="application_pk">Enter Application ID</label>
-                <input class="form-control" type="number" id="application_pk2" name="application_pk" placeholder="Application ID" required>
+                <input class="form-control" type="number" id="application_pk2" name="application_pk" placeholder="Application ID" >
             </div>
         </tr>
         <tr>
             <td>
                 <div class="form-group mb-3" > 
-                    <label class="form-label" for="institute">Institute A/C  or  CPDA</label>
+                    <label class="form-label" for="institute">Institute A/C  or  CPDA *</label>
                     <input class="form-control" type="text" id="institute" name="institute" placeholder="Enter institute A/C or CPDA" required>
                 </div>
             </td>
@@ -44,7 +44,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <label class="form-label" for="project_number">Project Number</label>
+                    <label class="form-label" for="project_number">Project Number *</label>
                     <input class="form-control" type="number" id="project_number" name="project_number" placeholder="Enter project number" required>
                 </div>
             </td>
@@ -79,7 +79,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <label class="form-label" for="pay_band">Pay Band</label>
+                    <label class="form-label" for="pay_band">Pay Band *</label>
                     <input class="form-control" type="number" id="pay_band" name="pay_band" placeholder="Enter your pay band" required>
                 </div>
             </td>
@@ -100,7 +100,7 @@
                 1.
             </td>
             <td>
-                Total travel cost
+                Total travel cost *
             </td>  
             <td>
                 <div class="form-group mb-3" >
@@ -113,7 +113,7 @@
                 2.
             </td>
             <td>
-                Road KMs
+                Road KMs *
             </td>
             <td>
                 <div class="form-group mb-3" >
@@ -126,7 +126,7 @@
                 3.
             </td>
             <td>
-                DA for the No. of days, hospitality availed
+                DA for no. of days, hospitality availed *
             </td>
             <td>
                 <div class="form-group mb-3" >
@@ -139,7 +139,7 @@
                 4.
             </td>
             <td>
-                DA for the No. of days, hospitality not availed
+                DA for no. of days, hospitality not availed *
             </td>
             <td>
                 <div class="form-group mb-3" >
@@ -156,7 +156,7 @@
             </td>
             <td>
                 <div class="form-group mb-3" >
-                    <input class="form-control" type="number" id="expenses" name="expenses" placeholder="Other Expenses" required>
+                    <input class="form-control" type="number" id="expenses" name="expenses" placeholder="Other Expenses" >
                 </div>
             </td>
         </tr>
@@ -165,7 +165,7 @@
                 6.
             </td>
             <td>
-                Grand total
+                Grand total *
             </td>
             <td>
                 <div class="form-group mb-3" >
@@ -178,7 +178,7 @@
                 7.
             </td>
             <td>
-                Less Advance
+                Less Advance *
             </td>
             <td>
                 <div class="form-group mb-3" >
@@ -191,7 +191,7 @@
                 8.
             </td>
             <td>
-                Net claim: Payable/Refundable
+                Net claim: Payable/Refundable *
             </td>
             <td>
                 <div class="form-group mb-3" >
@@ -202,7 +202,7 @@
     </table> 
     <br>
     <div class="col-md-6">
-        <label for="drivelink" class="form-label">Drive Link (with view access)</label>
+        <label for="drivelink" class="form-label">Drive Link (with view access) *</label>
         <input type="text" class="form-control" id="drivelink" name="drivelink" placeholder="Must contain all the receipts and tickets" required>
     </div>
     <br>
@@ -231,16 +231,16 @@
                 1.
             </td>
             <td>
-                <input class="form-control" type="text" id="name1" name="name1" placeholder="Put NA if none" required>
+                <input class="form-control" type="text" id="name1" name="name1" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="date1" name="date1" placeholder="dd/mm/yyy or -" required>
+                <input class="form-control" type="text" id="date1" name="date1" placeholder="dd/mm/yyy" >
             </td>
             <td>
-                <input class="form-control" type="number" id="age1" name="age1" placeholder="0 if NA" required>
+                <input class="form-control" type="number" id="age1" name="age1" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="rel1" name="rel1" placeholder="NA if none" required>
+                <input class="form-control" type="text" id="rel1" name="rel1" placeholder="" >
             </td>
         </tr>
         <tr>
@@ -248,16 +248,16 @@
                 2.
             </td>
             <td>
-                <input class="form-control" type="text" id="name2" name="name2" placeholder="Put NA if none" required>
+                <input class="form-control" type="text" id="name2" name="name2" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="date2" name="date2" placeholder="dd/mm/yyy or -" required>
+                <input class="form-control" type="text" id="date2" name="date2" placeholder="dd/mm/yyy" >
             </td>
             <td>
-                <input class="form-control" type="number" id="age2" name="age2" placeholder="0 if NA" required>
+                <input class="form-control" type="number" id="age2" name="age2" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="rel2" name="rel2" placeholder="NA if none" required>
+                <input class="form-control" type="text" id="rel2" name="rel2" placeholder="" >
             </td>
         </tr>
         <tr>
@@ -265,16 +265,16 @@
                 3.
             </td>
             <td>
-                <input class="form-control" type="text" id="name3" name="name3" placeholder="Put NA if none" required>
+                <input class="form-control" type="text" id="name3" name="name3" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="date3" name="date3" placeholder="dd/mm/yyy or -" required>
+                <input class="form-control" type="text" id="date3" name="date3" placeholder="dd/mm/yyy" >
             </td>
             <td>
-                <input class="form-control" type="number" id="age3" name="age3" placeholder="0 if NA" required>
+                <input class="form-control" type="number" id="age3" name="age3" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="rel3" name="rel3" placeholder="NA if none" required>
+                <input class="form-control" type="text" id="rel3" name="rel3" placeholder="" >
             </td>
         </tr>
         <tr>
@@ -282,16 +282,16 @@
                 4.
             </td>
             <td>
-                <input class="form-control" type="text" id="name4" name="name4" placeholder="Put NA if none" required>
+                <input class="form-control" type="text" id="name4" name="name4" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="date4" name="date4" placeholder="dd/mm/yyy or -" required>
+                <input class="form-control" type="text" id="date4" name="date4" placeholder="dd/mm/yyy" >
             </td>
             <td>
-                <input class="form-control" type="number" id="age4" name="age4" placeholder="0 if NA" required>
+                <input class="form-control" type="number" id="age4" name="age4" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="rel4" name="rel4" placeholder="NA if none" required>
+                <input class="form-control" type="text" id="rel4" name="rel4" placeholder="" >
             </td>
         </tr>
         <tr>
@@ -299,16 +299,16 @@
                 5.
             </td>
             <td>
-                <input class="form-control" type="text" id="name5" name="name5" placeholder="Put NA if none" required>
+                <input class="form-control" type="text" id="name5" name="name5" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="date5" name="date5" placeholder="dd/mm/yyy or -" required>
+                <input class="form-control" type="text" id="date5" name="date5" placeholder="dd/mm/yyy" >
             </td>
             <td>
-                <input class="form-control" type="number" id="age5" name="age5" placeholder="0 if NA" required>
+                <input class="form-control" type="number" id="age5" name="age5" placeholder="" >
             </td>
             <td>
-                <input class="form-control" type="text" id="rel5" name="rel5" placeholder="NA if none" required>
+                <input class="form-control" type="text" id="rel5" name="rel5" placeholder="" >
             </td>
         </tr>
     </table>
@@ -334,10 +334,10 @@
                 1.
             </td>
             <td>
-                <input class="form-control" type="text" id="part1" name="part1" required>
+                <input class="form-control" type="text" id="part1" name="part1" >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt1" name="amt1" placeholder="Rs." required>
+                <input class="form-control" type="number" id="amt1" name="amt1" placeholder="Rs." >
             </td>
             
         </tr>
@@ -346,10 +346,10 @@
                 2.
             </td>
             <td>
-                <input class="form-control" type="text" id="part2" name="part2" required>
+                <input class="form-control" type="text" id="part2" name="part2" >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt2" name="amt2" placeholder="Rs." required>
+                <input class="form-control" type="number" id="amt2" name="amt2" placeholder="Rs." >
             </td>
             
         </tr>
@@ -358,10 +358,10 @@
                 3.
             </td>
             <td>
-                <input class="form-control" type="text" id="part3" name="part3" required>
+                <input class="form-control" type="text" id="part3" name="part3" >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt3" name="amt3" placeholder="Rs." required>
+                <input class="form-control" type="number" id="amt3" name="amt3" placeholder="Rs." >
             </td>
             
         </tr>
@@ -370,10 +370,10 @@
                 4.
             </td>
             <td>
-                <input class="form-control" type="text" id="part4" name="part4" required >
+                <input class="form-control" type="text" id="part4" name="part4"  >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt4" name="amt4" placeholder="Rs." required>
+                <input class="form-control" type="number" id="amt4" name="amt4" placeholder="Rs." >
             </td>
             
         </tr>
@@ -382,10 +382,10 @@
                 5.
             </td>
             <td>
-                <input class="form-control" type="text" id="part5" name="part5" required>
+                <input class="form-control" type="text" id="part5" name="part5" >
             </td>
             <td>
-                <input class="form-control" type="number" id="amt5" name="amt5" placeholder="Rs." required>
+                <input class="form-control" type="number" id="amt5" name="amt5" placeholder="Rs." >
             </td>
             
         </tr>

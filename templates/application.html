@@ -2,7 +2,6 @@
 
 {% extends admin|yesno:'officebase.html,base.html' %}
 
-
 {% block body %}
 <div class="container">
     <tr>
@@ -18,11 +17,11 @@
             <table class="table">
                 <tr>
                     <td>
-                        Block year
+                        Block year * <span class="required"></span>
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="block_yr" name="block_yr" required>
+                            <input class="form-control" type="number" id="block_yr" name="block_yr" required >
                         </div>
                     </td>
                     <td>
@@ -45,14 +44,15 @@
             </table>
             <br>
             <div class="col-mb-3">
-                <label for="Basic Pay Rs.">Basic Pay Rs.</label>
+
+                <label for="Basic Pay Rs.">Basic Pay Rs. *</label>
                 <input class="form-control" type="number" id="basic_pay" name="basic_pay" required>
 
             </div>
             <div class="col-mb-3">
 
-                <label for="Basic Pay Rs.">Duration</label>
-            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration/NA" required>
+                <label for="Basic Pay Rs.">Duration *</label>
+            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration" required>
 
 
             </div>
@@ -76,7 +76,7 @@
                         2.
                     </td>
                     <td>
-                        Designation
+                        Designation *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -102,7 +102,7 @@
                         4.
                     </td>
                     <td>
-                        (a) Whether leave is required for availing L.T.C ?
+                        (a) Whether leave is required for availing L.T.C ? *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -119,7 +119,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration/NA" required>
+                            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration" >
                         </div>
                     </td>
                 </tr>
@@ -132,7 +132,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="date" id="departure" name="departure" required>
+                            <input class="form-control" type="text" id="departure" name="departure" placeholder="dd/mm/yyyy" >
                         </div>
                     </td>
                 </tr>
@@ -141,7 +141,7 @@
                         
                     </td>
                     <td>
-                        (c) Nature of leave
+                        (c) Nature of leave *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -154,7 +154,7 @@
                         
                     </td>
                     <td>
-                        (d) Purpose
+                        (d) Purpose *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -167,7 +167,7 @@
                         5.
                     </td>
                     <td>
-                        (i) Whether L.T.C is applied for going to home town or elsewhere?
+                        (i) Whether L.T.C is applied for going to home town or elsewhere? *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -180,7 +180,7 @@
                         
                     </td>
                     <td>
-                        (ii) Place of visit
+                        (ii) Place of visit *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -193,7 +193,7 @@
                         6. 
                     </td>
                     <td>
-                        Address during leave
+                        Address during leave *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -206,7 +206,7 @@
                         7. 
                     </td>
                     <td>
-                        Mode
+                        Mode *
                     </td>
                     <td>
                         <div class="col-mb-3">
@@ -246,12 +246,12 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="name" id="Name1" name="Name1" placeholder="Put NA if none" required>
+                            <input class="form-control" type="name" id="Name1" name="Name1" placeholder="" >
                         </div>
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="Age1" name="Age1" placeholder="Put 0 if NA" required>
+                            <input class="form-control" type="number" id="Age1" name="Age1" placeholder="" >
                         </div>
                     </td>
                 </tr>
@@ -264,12 +264,12 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="name" id="Name2" name="Name2" placeholder="Put NA if none"required>
+                            <input class="form-control" type="name" id="Name2" name="Name2" placeholder="">
                         </div>
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="Age2" name="Age2" placeholder="Put 0 if NA"required>
+                            <input class="form-control" type="number" id="Age2" name="Age2" placeholder="">
                         </div>
                     </td>
                 </tr>
@@ -282,28 +282,30 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="name" id="Name3" name="Name3" placeholder="Put NA if none"required>
+                            <input class="form-control" type="name" id="Name3" name="Name3" placeholder="">
                         </div>
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="Age3" name="Age3" placeholder="Put 0 if NA"required>
+                            <input class="form-control" type="number" id="Age3" name="Age3" placeholder="">
                         </div>
                     </td>
                 </tr>
             </table>
             <br>
             <span>
-                9.
             </span>
             <span><strong>
-                Amount of advance required 
+                Amount of advance required *
             </strong></span>
             <span>
                 Rs.
                 <div class="col-mb-3">
                     <input class="form-control" type="number" id="advance" name="advance" required>
                 </div>
+            </span>
+            <span>
+                * Required
             </span>
         </td>          
             <br>
