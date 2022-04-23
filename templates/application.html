@@ -5,7 +5,7 @@
 
 {% block body %}
 <div class="container">
-<<<<<<< HEAD
+
 {% comment %} <h4>Indian Institute of Technology, Kanpur</h4> {% endcomment %}
 <h3 style="text-align: center; padding:20px 0;">
     <b>Application for Grant of LTC </b>
@@ -103,7 +103,6 @@
     </tr>
     <tr>
         <td>
-=======
     {% comment %} <h4>Indian Institute of Technology, Kanpur</h4> {% endcomment %}
     <h3 style="text-align: center; padding:20px 0;">
         <b>Application for Grant of LTC </b>
@@ -111,7 +110,6 @@
     <div class="container bg-light">
         <form method="POST" action="/application_form" class="row g-3" >
             {% csrf_token %}
->>>>>>> d146b71cd6108ae14d1316dd693f04ee1a5a888c
             
             <table class="table">
                 <tr>
@@ -143,12 +141,11 @@
             </table>
             <br>
             <div class="col-mb-3">
-<<<<<<< HEAD
+
                 <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration/NA" required>
-=======
                 <label for="Basic Pay Rs.">Basic Pay Rs.</label>
                 <input class="form-control" type="number" id="basic_pay" name="basic_pay">
->>>>>>> d146b71cd6108ae14d1316dd693f04ee1a5a888c
+
             </div>
             <br>
             <table>
@@ -399,8 +396,6 @@
                     <input class="form-control" type="number" id="advance" name="advance" >
                 </div>
             </span>
-            
-<<<<<<< HEAD
         </td>
         <td>
             (b)(ii) Date of departure of family, if not availing for himself
@@ -578,7 +573,6 @@
     Rs.
     <div class="col-mb-3">
         <input class="form-control" type="number" id="advance" name="advance" required >
-=======
             
             <br>
             {% if submit %}
@@ -587,7 +581,6 @@
             </div>
             {% endif %}
         </form>
->>>>>>> d146b71cd6108ae14d1316dd693f04ee1a5a888c
     </div>
     {% if admin%}
     <form method="post" action="{%url 'pending'%}">
