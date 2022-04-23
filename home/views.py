@@ -200,7 +200,6 @@ def user_profile(request):
 @login_required
 def application(request):
     fr=ApplicationForm()
-    
     filled={}
     filled['email']=request.user.email
     filled['profile']=request.user.profile
