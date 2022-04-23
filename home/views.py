@@ -167,8 +167,9 @@ def user_profile(request):
     filled={}
     filled['email']=request.user.email
     s=True
+    print("Here ",s)
     if request.method=="POST":
-        if request.user.profile.email:
+        if request.user.profile.email==request.user.email:
             messages.info(request,"Profile already exists!")
             filled=request.user.profile.__dict__
             s=False
@@ -186,10 +187,14 @@ def user_profile(request):
                 for value in fr.errors.values():
                     messages.info(request,value)
     elif request.method=="GET":
-        if request.user.profile.email:
+        if request.user.profile.email==request.user.email:
             filled=request.user.profile.__dict__
-            # print(filled)
+            print(request.user.profile.email)
+            print(request.user.email)
+            print(filled['email'])
             s=False
+    # s=True
+    # filled['email']=request.user.email
     context={'fill_form':filled,'submit':s}
     return render(request,'profile.html',context)
 
