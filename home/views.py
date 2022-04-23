@@ -116,7 +116,7 @@ def form(request):
             messages.success(request,"Request has been submitted successfully!")
             messages.info(request,"Please note your application id for future reference  :  "+str(t.pk))
         else:
-            print(fr.errors)
+            # print(fr.errors)
             for value in fr.errors.values():
                 messages.info(request,value)
     elif request.method=="GET":
@@ -141,7 +141,7 @@ def form(request):
                 
                 filled=c.get(pk=request.GET.__getitem__("pk")).__dict__
                 filled["application_pk2"]=c.get(pk=request.GET.__getitem__("pk")).apl.pk
-                print(filled["application_pk2"])
+                # print(filled["application_pk2"])
                 s=False
     context={'fill_form':filled,'submit':s,'level':level,'admin':admin}
     return render(request,'form.html',context)
@@ -282,7 +282,7 @@ def pending_requests(request):
                     messages.warning(request,"Claim declined!")
             else:
                 messages.error(request,"Please select an Application")
-        print(d)
+        # print(d)
         return render(request,'pending.html',context={'Forms':d.filter(status=claimBill.PENDING)})
         # return render(request,'pending.html',context={'Applications':d.filter(status=claimBill.PENDING)})
     
