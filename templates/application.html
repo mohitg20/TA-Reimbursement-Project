@@ -5,320 +5,338 @@
 
 {% block body %}
 <div class="container">
-{% comment %} <h4>Indian Institute of Technology, Kanpur</h4> {% endcomment %}
-<h3 style="text-align: center; padding:20px 0;">
-    <b>Application for Grant of LTC </b>
-</h3>
-<div class="container bg-light">
-<form method="POST" action="/application_form" class="row g-3" >
-    {% csrf_token %}
-
-<table class="table">
-    <tr>
-        <td>
-            Block year
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="number" id="block_yr" name="block_yr">
-            </div>
-        </td>
-        <td>
-            Email
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="email" id="email" name="email">
-            </div>
-        </td>
-        <td>
-            P.F. No. / Roll No.
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="number" id="rollno" name="rollno" >
-            </div>
-        </td>
-    </tr>
-</table>
-<br>
-<div class="col-mb-3">
-    <label for="Basic Pay Rs.">Basic Pay Rs.</label>
-    <input class="form-control" type="number" id="basic_pay" name="basic_pay">
-</div>
-<br>
-<table>
-    <tr>
-        <td>
-            1.
-        </td>
-        <td>
-            Name
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="Name" name="Name">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            2.
-        </td>
-        <td>
-            Designation
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="Designation" name="Designation">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            3.
-        </td>
-        <td>
-            Department/Section
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="section" name="section" >
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            4.
-        </td>
-        <td>
-            (a) Whether leave is required for availing L.T.C ?
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="avail" name="avail" placeholder="Yes/No">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
+    {% comment %} <h4>Indian Institute of Technology, Kanpur</h4> {% endcomment %}
+    <h3 style="text-align: center; padding:20px 0;">
+        <b>Application for Grant of LTC </b>
+    </h3>
+    <div class="container bg-light">
+        <form method="POST" action="/application_form" class="row g-3" >
+            {% csrf_token %}
             
-        </td>
-        <td>
-            (b)(i) If so, duration of leave applied for
-        </td>
-        <td>
+            <table class="table">
+                <tr>
+                    <td>
+                        Block year
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="number" id="block_yr" name="block_yr">
+                        </div>
+                    </td>
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="email" id="email" name="email">
+                        </div>
+                    </td>
+                    <td>
+                        P.F. No. / Roll No.
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="number" id="rollno" name="rollno" >
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
             <div class="col-mb-3">
-                <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration">
+                <label for="Basic Pay Rs.">Basic Pay Rs.</label>
+                <input class="form-control" type="number" id="basic_pay" name="basic_pay">
             </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        1.
+                    </td>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="Name" name="Name">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.
+                    </td>
+                    <td>
+                        Designation
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="Designation" name="Designation">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3.
+                    </td>
+                    <td>
+                        Department/Section
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="section" name="section" >
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        4.
+                    </td>
+                    <td>
+                        (a) Whether leave is required for availing L.T.C ?
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="avail" name="avail" placeholder="Yes/No">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        (b)(i) If so, duration of leave applied for
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        (b)(ii) Date of departure of family, if not availing for himself
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="departure" name="departure" placeholder="dd/mm/yyyy">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        (c) Nature of leave
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="nature" name="nature" placeholder="Nature">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        (d) Purpose
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="Purpose" name="Purpose" placeholder="Purpose">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        5.
+                    </td>
+                    <td>
+                        (i) Whether L.T.C is applied for going to home town or elsewhere?
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="place" name="place" placeholder="Home town/Elsewhere">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        (ii) Place of visit
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="place1" name="place1" placeholder="Place of visit">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        6. 
+                    </td>
+                    <td>
+                        Address during leave
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="address" name="address" placeholder="Address">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        7. 
+                    </td>
+                    <td>
+                        Mode
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        8. 
+                    </td>
+                    <td>
+                        Details of family members who will avail L.T.C            
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>
+                        
+                    </th>
+                    <th>
+                        
+                    </th>
+                    <th>
+                        Full Name
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        1.
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="name" id="Name1" name="Name1" placeholder="Put NA if none">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="number" id="Age1" name="Age1" placeholder="Put NA if none" >
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        2.
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="name" id="Name2" name="Name2" placeholder="Put NA if none">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="number" id="Age2" name="Age2" placeholder="Put NA if none">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        3.
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="name" id="Name3" name="Name3" placeholder="Put NA if none">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-mb-3">
+                            <input class="form-control" type="number" id="Age3" name="Age3" placeholder="Put NA if none">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <span>
+                9.
+            </span>
+            <span><strong>
+                Amount of advance required 
+            </strong></span>
+            <span>
+                Rs.
+                <div class="col-mb-3">
+                    <input class="form-control" type="number" id="advance" name="advance" >
+                </div>
+            </span>
             
-        </td>
-        <td>
-            (b)(ii) Date of departure of family, if not availing for himself
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="departure" name="departure" placeholder="dd/mm/yyyy">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
             
-        </td>
-        <td>
-            (c) Nature of leave
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="nature" name="nature" placeholder="Nature">
+            <br>
+            {% if submit %}
+            <div>
+                <button class="btn btn-primary" type="submit">Submit</button>
             </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            
-        </td>
-        <td>
-            (d) Purpose
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="Purpose" name="Purpose" placeholder="Purpose">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            5.
-        </td>
-        <td>
-            (i) Whether L.T.C is applied for going to home town or elsewhere?
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="place" name="place" placeholder="Home town/Elsewhere">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            
-        </td>
-        <td>
-            (ii) Place of visit
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="place1" name="place1" placeholder="Place of visit">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-           6. 
-        </td>
-        <td>
-            Address during leave
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="address" name="address" placeholder="Address">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-           7. 
-        </td>
-        <td>
-            Mode
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-           8. 
-        </td>
-        <td>
-            Details of family members who will avail L.T.C            
-        </td>
-
-    </tr>
-    <tr>
-        <th>
-            
-        </th>
-        <th>
-            
-        </th>
-        <th>
-            Full Name
-        </th>
-        <th>
-            Age
-        </th>
-    </tr>
-    <tr>
-        <td>
-            
-        </td>
-        <td>
-            1.
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="name" id="Name1" name="Name1" placeholder="Put NA if none">
-            </div>
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="number" id="Age1" name="Age1" placeholder="Put NA if none" >
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            
-        </td>
-        <td>
-            2.
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="name" id="Name2" name="Name2" placeholder="Put NA if none">
-            </div>
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="number" id="Age2" name="Age2" placeholder="Put NA if none">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            
-        </td>
-        <td>
-            3.
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="name" id="Name3" name="Name3" placeholder="Put NA if none">
-            </div>
-        </td>
-        <td>
-            <div class="col-mb-3">
-                <input class="form-control" type="number" id="Age3" name="Age3" placeholder="Put NA if none">
-            </div>
-        </td>
-    </tr>
-</table>
-<br>
-<span>
-    9.
-</span>
-<span><strong>
-     Amount of advance required 
-</strong></span>
-<span>
-    Rs.
-    <div class="col-mb-3">
-        <input class="form-control" type="number" id="advance" name="advance" >
+            {% endif %}
+        </form>
     </div>
-</span>
-
-
-<br>
-{% if submit or admin %}
-<div>
-<button class="btn btn-primary" type="submit">{{ admin|yesno:"Update,Submit" }}</button>
-</div>
-{% endif %}
-</form>
-</div>
+    {% if admin%}
+    <form method="post" action="{%url 'pending'%}">
+        {% csrf_token %}
+        <input name="pk" id="id" hidden></input>
+        <div>
+            <div class="form-group mb-3" >
+                <button type="submit" name="accept" value="yes" style="padding: 0px;border-width: 0px;">
+                    <span style="font-size: 30px;">&#9989;</span>Accept
+                </button>
+            </div>
+            
+            
+            <div class="form-group mb-3" >
+                <button type="submit" name="accept"  value="no" style="padding: 0px;border-width: 0px;">
+                    <span style="font-size: 30px;">&#10060;</span>Reject
+                </button>
+            </div>
+        </div>
+    </form>
+    {% endif %}
 </div>
 {% endblock body %}
 
 {% block script %}
 {% if fill_form %}
-    {%for key,value in fill_form.items%}
-    var x=document.getElementById("{{key}}")
-    if(x){
-        x.value = "{{value}}";
-        {% if not admin %}
-        x.readOnly=true;
-        {% endif %}
-    }
-    {%endfor%}
+{%for key,value in fill_form.items%}
+var x=document.getElementById("{{key}}")
+if(x){
+    x.value = "{{value}}";
+    x.readOnly=true;
+}
+{%endfor%}
 {% endif %}
 {% endblock script %}
 

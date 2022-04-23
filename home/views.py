@@ -231,6 +231,7 @@ def application(request):
             s=False
             if request.user.groups.filter(name="Office"):
                 filled=d.get(pk=request.GET.__getitem__("pk")).__dict__
+                print(filled)
                 admin=True
             elif d.filter(email=request.user.email,pk=request.GET.__getitem__("pk")).count()>0:
                 filled=d.get(email=request.user.email,pk=request.GET.__getitem__("pk")).__dict__
