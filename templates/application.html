@@ -22,7 +22,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="block_yr" name="block_yr">
+                            <input class="form-control" type="number" id="block_yr" name="block_yr" required>
                         </div>
                     </td>
                     <td>
@@ -46,9 +46,15 @@
             <br>
             <div class="col-mb-3">
 
-                <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration/NA" required>
                 <label for="Basic Pay Rs.">Basic Pay Rs.</label>
-                <input class="form-control" type="number" id="basic_pay" name="basic_pay">
+                <input class="form-control" type="number" id="basic_pay" name="basic_pay" required>
+
+            </div>
+            <div class="col-mb-3">
+
+                <label for="Basic Pay Rs.">Duration</label>
+            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration/NA" required>
+
 
             </div>
             <br>
@@ -75,7 +81,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="Designation" name="Designation">
+                            <input class="form-control" type="text" id="Designation" name="Designation" required>
                         </div>
                     </td>
                 </tr>
@@ -101,7 +107,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="avail" name="avail" placeholder="Yes/No">
+                            <input class="form-control" type="text" id="avail" name="avail" placeholder="Yes/No" required>
                         </div>
                     </td>
                 </tr>
@@ -114,7 +120,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration">
+                            <input class="form-control" type="number" id="duration" name="duration" placeholder="Duration/NA" required>
                         </div>
                     </td>
                 </tr>
@@ -127,7 +133,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="departure" name="departure" placeholder="dd/mm/yyyy">
+                            <input class="form-control" type="text" id="departure" name="departure" placeholder="dd/mm/yyyy or NA" required>
                         </div>
                     </td>
                 </tr>
@@ -140,7 +146,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="nature" name="nature" placeholder="Nature">
+                            <input class="form-control" type="text" id="nature" name="nature" placeholder="Nature" required>
                         </div>
                     </td>
                 </tr>
@@ -153,7 +159,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="Purpose" name="Purpose" placeholder="Purpose">
+                            <input class="form-control" type="text" id="Purpose" name="Purpose" placeholder="Purpose" required>
                         </div>
                     </td>
                 </tr>
@@ -166,7 +172,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="place" name="place" placeholder="Home town/Elsewhere">
+                            <input class="form-control" type="text" id="place" name="place" placeholder="Home town/Elsewhere" required>
                         </div>
                     </td>
                 </tr>
@@ -179,7 +185,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="place1" name="place1" placeholder="Place of visit">
+                            <input class="form-control" type="text" id="place1" name="place1" placeholder="Place of visit" required>
                         </div>
                     </td>
                 </tr>
@@ -192,7 +198,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="address" name="address" placeholder="Address">
+                            <input class="form-control" type="text" id="address" name="address" placeholder="Address" required>
                         </div>
                     </td>
                 </tr>
@@ -205,7 +211,7 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air">
+                            <input class="form-control" type="text" id="mode" name="mode" placeholder="Mode: Rail/Road/Air" required>
                         </div>
                     </td>
                 </tr>
@@ -241,12 +247,12 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="name" id="Name1" name="Name1" placeholder="Put NA if none">
+                            <input class="form-control" type="name" id="Name1" name="Name1" placeholder="Put NA if none" required>
                         </div>
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="Age1" name="Age1" placeholder="Put NA if none" >
+                            <input class="form-control" type="number" id="Age1" name="Age1" placeholder="Put 0 if NA" required>
                         </div>
                     </td>
                 </tr>
@@ -259,12 +265,12 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="name" id="Name2" name="Name2" placeholder="Put NA if none">
+                            <input class="form-control" type="name" id="Name2" name="Name2" placeholder="Put NA if none"required>
                         </div>
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="Age2" name="Age2" placeholder="Put NA if none">
+                            <input class="form-control" type="number" id="Age2" name="Age2" placeholder="Put 0 if NA"required>
                         </div>
                     </td>
                 </tr>
@@ -277,12 +283,12 @@
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="name" id="Name3" name="Name3" placeholder="Put NA if none">
+                            <input class="form-control" type="name" id="Name3" name="Name3" placeholder="Put NA if none"required>
                         </div>
                     </td>
                     <td>
                         <div class="col-mb-3">
-                            <input class="form-control" type="number" id="Age3" name="Age3" placeholder="Put NA if none">
+                            <input class="form-control" type="number" id="Age3" name="Age3" placeholder="Put 0 if NA"required>
                         </div>
                     </td>
                 </tr>
@@ -297,7 +303,7 @@
             <span>
                 Rs.
                 <div class="col-mb-3">
-                    <input class="form-control" type="number" id="advance" name="advance" >
+                    <input class="form-control" type="number" id="advance" name="advance" required>
                 </div>
             </span>
         </td>          
