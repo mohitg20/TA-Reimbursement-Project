@@ -200,6 +200,7 @@ def user_profile(request):
 @login_required
 def application(request):
     fr=ApplicationForm()
+    
     filled={}
     filled['email']=request.user.email
     filled['profile']=request.user.profile
@@ -236,9 +237,10 @@ def application(request):
                 s=False
             # print(filled)
         else:
-            if not request.user.profile.email:
+            if not (request.user.profile.email==request.user.email):
                 messages.error(request,"Update your Profile first")
                 return redirect('/user_profile')
+    
     context={'fill_form':filled,'submit':s,"admin":admin}
     return render(request,'application.html',context)
 
