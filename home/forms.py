@@ -29,10 +29,10 @@ class ProfileForm(forms.ModelForm):
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        exclude=['status','email','profile']
+        exclude=['status','email','profile','Name1','Age1','Name2','Age2','Name3','Age3','departure','duration']
 
 class claimBillForm(forms.ModelForm):
     
     class Meta:
         model = claimBill
-        exclude=['apl','status','name','email','roll_number','designation','department','purpose']
+        exclude=['apl','status','name','email','roll_number','designation','department','purpose','expenses','name1','name2','name3','name4','name5','date1','date2','date3','date4','date5','age1','age2','age3','age4','age5','rel1','rel2','rel3','rel4','rel5','part1','part2','part3','part4','part5','amt1','amt2','amt3','amt4','amt5']
