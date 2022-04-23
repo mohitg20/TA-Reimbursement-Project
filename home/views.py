@@ -167,7 +167,6 @@ def user_profile(request):
     filled={}
     filled['email']=request.user.email
     s=True
-    print("Here ",s)
     if request.method=="POST":
         if request.user.profile.email==request.user.email:
             messages.info(request,"Profile already exists!")
@@ -189,9 +188,9 @@ def user_profile(request):
     elif request.method=="GET":
         if request.user.profile.email==request.user.email:
             filled=request.user.profile.__dict__
-            print(request.user.profile.email)
-            print(request.user.email)
-            print(filled['email'])
+            # print(request.user.profile.email)
+            # print(request.user.email)
+            # print(filled['email'])
             s=False
     # s=True
     # filled['email']=request.user.email
@@ -201,6 +200,7 @@ def user_profile(request):
 @login_required
 def application(request):
     fr=ApplicationForm()
+    
     filled={}
     filled['email']=request.user.email
     filled['profile']=request.user.profile
@@ -238,9 +238,10 @@ def application(request):
                 s=False
             # print(filled)
         else:
-            if not request.user.profile.email:
+            if not (request.user.profile.email==request.user.email):
                 messages.error(request,"Update your Profile first")
                 return redirect('/user_profile')
+    
     context={'fill_form':filled,'submit':s,"admin":admin}
     return render(request,'application.html',context)
 
