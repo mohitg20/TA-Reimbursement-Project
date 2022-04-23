@@ -200,7 +200,6 @@ def user_profile(request):
 @login_required
 def application(request):
     fr=ApplicationForm()
-    
     filled={}
     filled['email']=request.user.email
     filled['profile']=request.user.profile
@@ -231,6 +230,7 @@ def application(request):
             s=False
             if request.user.groups.filter(name="Office"):
                 filled=d.get(pk=request.GET.__getitem__("pk")).__dict__
+                print(filled)
                 admin=True
             elif d.filter(email=request.user.email,pk=request.GET.__getitem__("pk")).count()>0:
                 filled=d.get(email=request.user.email,pk=request.GET.__getitem__("pk")).__dict__
